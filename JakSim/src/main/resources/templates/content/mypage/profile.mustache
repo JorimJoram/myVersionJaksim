@@ -1,0 +1,45 @@
+{{>layout/header}}
+    <link rel="stylesheet" href="/css/mypage/mypageStyle.css">
+    <script src="/javascript/mypage/profile.js"></script>
+</head>
+
+<body>
+{{>layout/navi}}
+
+<div style="margin: 60px auto;">
+    <div style="width: 900px; margin: 0px auto;">
+        <p id="profile_head" class="jaksim_font">프로필 수정</p>
+        <p style="font-size: 13px;">작심득근의 프로필 이미지와 이메일을 수정하실 수 있습니다.</p>
+
+        <table>
+            <tr>
+                <th class="profile_mid_title">프로필 사진 수정</th>
+                <td class="profile_item_wrapper">
+                    {{#session_profile}}
+                        <img src="{{session_profile.path}}" id="profile_preview">
+                    {{/session_profile}}
+                    {{^session_profile}}
+                        <img src="/image/profiles/profile.jpg" id="profile_preview">
+                    {{/session_profile}}
+                    <div style="margin: 30px auto;">
+                        <input id="profile_imgInput" type="file" onchange="readURL(this);">
+                        <button type="button" id="checkFile" class="jaksim_btn">프로필 사진 변경</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="profile_mid_title">이메일 변경</th>
+                <td class="profile_item_wrapper">
+                    <div>
+                        <input type="email" id="profile_emailInput" class="profile_emailInput jaksim_font" value="{{user_info.email}}">
+                        <button type="button" class="jaksim_btn" id="profile_change_email">변경</button>
+                        <span id="profile_dup_span" style="color:red;"></span>
+                    </div>
+                    <div id="profile_validate_div" style="margin: 10px 0px;"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+{{>layout/footer}}

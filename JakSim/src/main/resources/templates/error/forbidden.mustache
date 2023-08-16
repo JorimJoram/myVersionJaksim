@@ -1,0 +1,22 @@
+{{>layout/header}}
+</head>
+
+<body>
+{{>layout/navi}}
+
+<div class="container">
+    <h1>권한이 없는 페이지입니다.</h1>
+    <hr>
+
+    <div style="text-align:center;">
+        <img src="/image/error/403.png" alt="Error" class="error_img">
+
+        <div>
+            <p>죄송합니다만, 현재 사용자분의 권한으로는 접근할 수 없는 페이지입니다.</p>
+        </div>
+
+        <button onclick="window.location.href='/'" class="jaksim_btn">홈으로 이동하기</button>
+    </div>
+</div>
+
+{{>layout/footer}}

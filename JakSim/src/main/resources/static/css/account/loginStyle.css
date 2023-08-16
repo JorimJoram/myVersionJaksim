@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+
+.login_input{
+    border: none;
+    border-bottom: 2px solid #949494;
+
+    margin-top: 20px;
+    width: 100%;
+
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 17px;
+    color: black;
+}
+
+.login_input::placeholder{
+    color: #BFBFBF;
+}
+
+.login_input:focus{
+    outline: none;
+}
+
+#login_head{
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #C8B0FC;
+}
+
+#login_wrapper{
+    border: 0.5px solid gray;
+    border-radius: 20px;
+    padding: 100px;
+
+    text-align: center;
+    width: 600px;
+
+    position: absolute;
+    top: 150px;
+    left: 440px;
+}
+
+#login_loginButton{
+    margin-top: 20px;
+    width: 100%;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.login_a_tag{
+    text-decoration: none;
+}
+
+#login_account_container{
+    margin-top: 20px;
+    display:flex;
+    justify-content: space-between;
+}

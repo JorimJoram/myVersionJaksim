@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+
+#select-pt {
+    height: 28px;
+    margin: 15px;
+
+    font-size: 15px;
+    font-weight: bold;
+    color: rgba(116, 116, 116, 1);
+}
+
+#pt_type {
+    margin-left: 15px;
+    margin-right: 7px;
+    border-right-color: #5d73fd;
+}
+
+#pt_cnt {
+    padding-left: 7px;
+
+    border-left-color: #A584EE;
+    border-left-style: solid;
+}
+
+#trainer_list {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: rgba(116, 116, 116, 1);
+    float: right;
+    padding: 5px;
+    marign: 10px;
+}
+
+#intro {
+    width: 250px;
+    display: inline-block;
+}

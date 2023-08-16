@@ -1,0 +1,28 @@
+.find_title_container{
+    margin:50px auto;
+    text-align: center;
+}
+
+.find_input_container{
+    margin:50px; auto;
+    text-align:center;
+}
+
+.find_center_logo{
+    color: #C8B0FC
+    font-size: 1000px;
+}
+
+.find_input_container > input{
+    width: 400px;
+
+border: none;
+    border-bottom: 2px solid #949494;
+
+    margin-top: 20px;
+    margin-right: 5px;
+
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 17px;
+    color: black;
+}

@@ -1,0 +1,20 @@
+{{>layout/header}}
+    <script src="/javascript/root.js"></script>
+    <script src="/javascript/mypage/mypage.js"></script>
+    <link rel="stylesheet" href="/css/mypage/mypageStyle.css">
+</head>
+
+<body>
+{{>layout/navi}}
+
+    <div class="mypage_container">
+        <aside>
+            {{>content/mypage/aside/main_aside}}
+        </aside>
+        <section>
+            {{>content/mypage/content/main_content}}
+        </section>
+
+    </div>
+
+{{>layout/footer}}

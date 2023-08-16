@@ -1,0 +1,266 @@
+aside{
+    float:left;
+    min-height: 1000px;
+    width: 30%;
+    border-left: 0.0625 solid #f2f2f2;
+    border-right: 0.0625px solid #f2f2f2;
+
+    box-shadow: 5px 0px 10px #d0d0d0;
+}
+
+section{
+    float: right;
+    height:95%;
+    width: 70%;
+}
+
+#auth_head{
+    font-weight: bold;
+    color: #C8B0FC;
+    cursor: pointer;
+    margin: 100px 0px 0px 0px;
+}
+
+#pwInput{
+    border: none;
+    border-bottom: 2px solid #949494;
+
+    margin-top: 20px;
+    margin-right: 5px;
+    width: 60%;
+
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 17px;
+    color: black;
+}
+
+#pwInput:focus{
+    outline:none;
+}
+
+#auth_pwContainer{
+    padding: 100px 300px;
+}
+
+#mypage_aside_profileImgContainer{
+    margin-top: 3rem;
+    width: 100%;
+    text-align: center;
+    padding: 5%;
+
+    position: relative;
+    display: inline-block;
+}
+
+#mypage_aside_profileImg{
+    width: 150px;
+    height: 150px;
+
+    object-fit: cover;
+
+    border: 0.15rem solid #C8B0FC;
+    border-radius: 50%;
+    margin-top: 40px;
+}
+
+#mypage_aside_profileImgContainer button{
+    position: absolute;
+    bottom: 20px;
+    right: 110px;
+
+    width:50px;
+    height:50px;
+
+    background-color: #C8B0FC;
+    color: #ffffff;
+
+    border: 2px solid #C8B0FC;
+    border-radius: 50%;
+
+    font-size: 25px;
+}
+
+#mypage_aside_profileImgContainer button:active,
+#mypage_aside_profileImgContainer button:hover,
+#mypage_aside_profileImgContainer button:disabled{
+    color: #BFBFBF;
+    background: #E9E1FB;
+    border: 2px solid #E9E1FB;
+}
+
+
+#mypage_aside_username, #mypage_aside_email, #mypage_aside_loginspan{
+    text-align: center;
+}
+
+.aside_item: hover, .aside_item:active{
+    color: #C8B0FC;
+}
+
+#mypage_aside_banner{
+    margin: 2.5rem 1rem 2.5rem 1rem;
+    padding: 10px;
+    border: 2px solid #C8B0FC;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+
+    text-align: center;
+}
+
+#mypage_aside_banner > span{
+    color: #C8B0FC;
+    font-weight: bold;
+}
+
+#mypage_aside_nav > ul > li{
+    list-style-type: none;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+#mypage_aside_nav > ul > li > a{
+    text-decoration-line: none;
+}
+
+.mypage_container{
+    margin: 0rem 3rem;
+}
+
+.mypage_title{
+    font-weight: bold;
+    color: #777777;
+}
+
+.mypage_table_tableHead{
+    background-color: #C8B0FC;
+    border-top-right-radius: 10px;
+    border-top-left-radius:10px;
+    padding: 5px;
+    margin-top: 30px;
+}
+
+.mypage_table_tableHead > a > span{
+    color: white;
+    font-size: 20px;
+}
+
+.mypage_table_tableHead > a{
+   color:white;
+   text-decoration-line: none;
+   font-weight:bold;
+   font-size: 1.3rem;
+}
+
+.mypage_table_row{
+    padding: 0.5rem;
+    border: 0.0625rem solid #f2f2f2;
+    border-top: none;
+
+
+    display:flex;
+    align-items: center;
+}
+
+.mypage_table_row > span, .mypage_table_row > input, .mypage_table_row > table{
+    margin-right: auto;
+}
+
+.mypage_table_innerRow{
+    width: 100%;
+}
+
+.mypage_table_innerRow > span{
+    margin-right: 30px;
+}
+
+#profile_preview{
+    width:150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 0.15rem solid #C8B0FC;
+}
+
+.profile_input{
+    border: none;
+}
+
+.hidden{
+    display:none;
+}
+
+.inbody_create_input{
+    width: 80px;
+
+    border: 0.09rem solid #949494;
+    border-radius: 3px;
+    padding: 3px;
+}
+
+/*이거 버튼 왜 안지워지지?*/
+input[type='number']::webkit-outer-spin-button,
+input[type='number']::webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+    display: none;
+}
+
+
+.inbody_create_input:focus{
+    outline: none;
+}
+
+#inbody_selector{
+    margin: 10px auto;
+    font-size: 15px;
+    width: 175px;
+    border: 0.09rem solid #949494;
+
+    background-color: white;
+
+    float:right;
+}
+
+#inbodyChart{
+    margin: 30px;
+}
+
+.inbody_caution{
+    display: block;
+
+    margin: auto 30px;
+
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    color: #747474;
+}
+
+#profile_head{
+    font-size: 20px;
+}
+
+.profile_mid_title{
+    width: 200px;
+    background-color:#EFEFEF;
+    text-align:center;
+    color:black;
+
+    border-top: 0.09rem solid #CFCFCF;
+    border-bottom: 0.09rem solid #CFCFCF;
+    border-right: 0.09rem solid #CFCFCF;
+}
+
+.profile_item_wrapper{
+    width: 700px;
+    padding: 30px;
+
+    border-top: 0.09rem solid #CFCFCF;
+    border-bottom: 0.09rem solid #CFCFCF;
+}
+
+.profile_emailInput{
+    width: 300px;
+    border:none;
+    border-bottom: 2px solid black;
+    /*margin-right: 10px;*/
+}

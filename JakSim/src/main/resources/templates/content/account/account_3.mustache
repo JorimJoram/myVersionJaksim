@@ -1,0 +1,47 @@
+{{>layout/header}}
+    <link rel="stylesheet" href="/css/account/accountStyle.css">
+    <script src="/javascript/account/account_3.js"></script>
+    <script src="/javascript/email/certEmail.js"></script>
+</head>
+
+<body>
+{{>layout/navi}}
+
+    <div class="container">
+        <div class="account_container">
+            <div style="text-align: center;">
+                <h1 onclick="window.location.href='/';" class="account_head">작심득근</h1>
+            </div>
+
+            <div><span class="account_span">전화번호</span></div>
+            <div class="input_container">
+                <input type="tel" class="account_input_3" placeholder="Tel" id="account_tel">
+                <button class="jaksim_btn" type="button" id="account_phone_button">인증하기</button>
+                <p id="account_phone_span" style="margin-bottom: 50px;"></p>
+            </div>
+
+
+            <div>
+                <span class="account_span">이메일</span>
+            </div>
+
+            <div class="input_container">
+                <input class="account_input_3" type="email" placeholder="Email" id="account_email"/>
+                <button class="jaksim_btn" type="button" id="account_email_button">인증하기</button>
+                <p id="account_check_dupmail" style="color:red;"></p>
+            </div>
+            <span style="color:red;" id="account_email_counter"></span>
+
+            <div class="input_container" id="account_code_container">
+
+            </div>
+            <div>
+                <span id="account_codeCheck_fail" style="color:red;"></span>
+            </div>
+
+            <a class="btn btn-secondary" href="/account/2">이전</a>
+            <button id="account_3_next" class="btn btn-primary" disabled>확인</button>
+        </div>
+    </div>
+
+{{>layout/footer}}

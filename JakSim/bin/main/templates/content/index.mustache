@@ -1,0 +1,64 @@
+{{>layout/header}}
+<link rel="stylesheet" href="/css/trainer/trainerSearch.css">
+<script src="https://kit.fontawesome.com/05995ac069.js" crossorigin="anonymous"></script>
+{{>layout/navi}}
+
+<style>
+#index_subTitle{
+    margin-top: 7vh;
+    margin-left: 20%;
+    margin-bottom: 30px;
+}
+#index_subTitle > h3 {
+    color:#747474;
+}
+
+</style>
+
+<body>
+
+<div id="index_body">
+    <div style="width: 100%;">
+        <a href="/trainer/trainerSearch"><img src="/image/MainPage.png" style="width: 100%; height: auto;" alt="..."></a>
+    </div>
+
+    <div id="index_subTitle">
+        <span class="jaksim_title_font" style="color: #747474;">새로운 트레이너님들을 소개합니다!</span> 
+    </div>
+
+    <div class="trainer-container" style="width: 100%; margin-top: 15px; margin-left: 0px;  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; ">
+  
+        {{#trainer}}
+            <div class="trainer-item" style="width: 300px; border-radius: 10px; margin-left: 10px; margin-right: 10px; display: flex;
+  flex-direction: column;
+  align-items: center;">
+                <a href="/trainer/{{trainerId}}">
+                    <div class="find_trainer_crop">
+                        <img src="{{profile}}" style="margin-bottom: 10px" alt="트레이너" class="find_trainer_profile">
+                    </div>
+                    <div>
+                        <p style="text-align: center;">{{gym}} 헬스장 {{userName}} 트레이너</p>
+                    </div>
+                </a>
+            </div>
+        {{/trainer}}
+    </div>
+</div>
+{{>layout/footer}}
+
+<script>
+
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
+  // Your JavaScript code here
+  var innerWidth = window.innerWidth;
+  console.log("Inner width of the browser window: " + innerWidth);
+
+  var myDiv = document.getElementById("index_body");
+  myDiv.style.width = innerWidth + "px";
+});
+
+
+</script>

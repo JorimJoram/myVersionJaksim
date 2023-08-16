@@ -1,0 +1,21 @@
+{{>layout/header}}
+    <script src="/javascript/find/findPw_1.js"></script>
+    <link rel="stylesheet" href="/css/find/findStyle.css">
+</head>
+
+<body>
+{{>layout/navi}}
+
+    <div class="container">
+        <div class="find_title_container">
+            <h5 class="find_center_ment">등록하신 아이디와 이메일을 입력해주세요</h5>
+        </div>
+        <div class="find_input_container">
+            <input id="find_pw_userid" type="text" placeholder="아이디를 입력해주세요!">
+            <input id="find_pw_email" type="email" placeholder="이메일을 입력해주세요!">
+            <button id="find_pw_check" class="jaksim_btn">등록확인</button>
+        </div>
+        <span id="find_pw_failSpan" style="color:red;"></span>
+    </div>
+
+{{>layout/footer}}

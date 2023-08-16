@@ -1,0 +1,39 @@
+{{>layout/header}}
+    <script src="/javascript/administrator/session/sessionList.js"></script>
+    <link rel="stylesheet" href="/css/administrator/session/sessionStyle.css">
+</head>
+
+<body>
+
+<div class="container">
+    <p>Sessions</p>
+
+    <p>접속 회원: {{amount_user}}</p>
+
+    <table id="session_list_table">
+        <tr>
+            <th>계정 명</th>
+            <th>등급</th>
+            <th>세션 아이디</th>
+            <th>최근 요청</th>
+            <th>만료 여부</th>
+            <th>제한 버튼</th>
+        </tr>
+        {{#sessionList}}
+            <tr>
+                <td><a href="/man/info/{{username}}">{{username}}</a></td>
+                <td>{{role}}</td>
+                {{#sessions}}
+                    <td>{{sessionId}}</td>
+                    <td>{{lastRequest}}</td>
+                    <td>{{expired}}</td>
+                    <td>
+                        <button class="remove_expire_button">세선 제거</button>
+                    </td>
+                {{/sessions}}
+            </tr>
+        {{/sessionList}}
+    </table>
+</div>
+{{>layout/footer}}
+</body>

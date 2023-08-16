@@ -1,0 +1,31 @@
+
+<div id="mypage_aside_profileImgContainer">
+    <img src="/image/TrainerImg.jpg" alt="profile" id="trainerImg" width="200" height="170">
+</div>
+<h3 id="mypage_aside_username" style="color:black">{{#name}}{{userName}}{{/name}}</h3>
+<p style="color:black; text-align: center;">트레이너</p>
+<hr style="
+    margin-bottom: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;">
+
+<div id="mypage_aside_nav">
+    <style>
+    #aside_menu_list {
+        font-size: 16px;
+
+    }
+
+    #aside_menu_list:hover {
+        color: #C8B0FC;
+
+    }
+    </style>
+
+    <ul>
+        <li><a href="/trainer/trainerUpdate/{{#name}}{{trainerId}}{{/name}}" id="aside_menu_list">정보수정</a></li>
+        <li><a href="/trainer/trainerControl" id="aside_menu_list">PT 시간관리</a></li>
+        <li><a href="/trainer/ptUserInfo" id="aside_menu_list">회원관리</a></li>
+    </ul>
+</div>

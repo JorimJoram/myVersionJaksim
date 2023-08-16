@@ -1,0 +1,145 @@
+.toggle-btn {
+    display: none;
+  }
+
+  .toggle-label {
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 10px;
+    width: 150px;
+    cursor: pointer;
+  }
+
+  .address-search {
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-right: 10px;
+      width: 100px;
+      cursor: pointer;
+      background-color: white;
+  }
+
+  .address-search:hover {
+    background-color: #e3d8fb;
+  }
+
+  .toggle-label:hover {
+    background-color: #e3d8fb;
+  }
+
+  .toggle-btn:checked + .toggle-label {
+    background-color: #A584EE;
+    color: #fff;
+    border: 0px;
+  }
+
+  .toggle-btn:checked + .toggle-label:hover {
+    background-color: #A584EE;
+  }
+
+  #findTrainer_container{
+    width: 1150px;
+    margin: 5vh auto;
+  }
+  #findTrainer_container > #location{
+    margin-left: 15px;
+
+  }
+  #location_img{
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+  }
+  #findTrainer_container > #button_container{
+    margin: 30px auto;
+    text-align: center;
+  }
+  #amount_trainer{
+    margin-left: 15px;
+  }
+
+  .find_trainer_crop {
+    display: flex;
+    width: 250px; 
+    height: 200px; 
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+    border-radius: 5%;
+}
+
+.find_trainer_profile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crop the image to cover the container */
+    object-position: top center; /* Align the image to the top center */
+    border-radius: 5%;
+}
+
+  #findTrainer_container > table{
+    margin-top: 30px;
+    border-collapse: separate;
+    border-spacing: 6rem 1rem;
+  }
+
+
+#trainer_create_container{
+    margin: 10rem;
+    margin-top: 3vh;
+}
+#trainer_create_introduce{
+    resize:none;
+    padding-left: 15vh;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 70%;
+}
+
+#findTrainerWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#findTrainer_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Adjust as needed */
+}
+.trainer-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1200px;
+  margin-left: 230px;
+}
+
+.trainer-item {
+  width: 300px;
+  margin-bottom: 20px;
+  margin-right: 30px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the items horizontally */
+}
+
+.trainer-item a {
+  color: black;
+  text-decoration: none;
+}

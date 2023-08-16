@@ -1,0 +1,32 @@
+#payment_item_container{
+    min-height: 600px;
+}
+
+#pay_list_table{
+    width: 100%;
+    margin: 30px auto;
+    text-align: center;
+}
+
+#pay_list_table > thead{
+    background-color: #CFCFCF;
+}
+
+.pay_list_headfont{
+    color: black;
+    font-size: 18px;
+    height: 50px;
+}
+
+#payment_page_container{
+    margin: 30px auto;
+    text-align: center;
+}
+
+.payment_item_img{
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin: 5px auto;
+}

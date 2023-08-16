@@ -1,0 +1,73 @@
+{{>layout/header}}
+    <link rel="stylesheet" href="/css/mypage/mypageStyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+    <script src="/javascript/inbody/body_info.js"></script>
+</head>
+
+<body>
+{{>layout/navi}}
+<div class="mypage_container">
+    <aside>
+        {{>content/mypage/aside/main_aside}}
+    </aside>
+    <section>
+        <div class="mypage_container">
+            <div style="margin: 10px auto;">
+                <select name="inbody_selector" class="jaksim_font form-select" id="inbody_selector">
+                    <option value="weight">체중</option>
+                    <option value="score">총 점수</option>
+                    <option value="fat">체지방율</option>
+                    <option value="muscle">골격근</option>
+                </select>
+            </div>
+
+            <div>
+                <canvas id="inbodyChart"></canvas>
+            </div>
+            <div>
+                <span class="inbody_caution">* 신장과 체중은 반드시 입력해주세요!</span>
+                <span class="inbody_caution">* 그래프 상단의 범례를 클릭하시면 그래프를 껐다 켤 수 있습니다.</span>
+                <span class="inbody_caution">* 입력하지 않은 카테고리는 그래프에 반영되지 않습니다.</span>
+            </div>
+
+            <span style="display:none" id="inbody_totalPage">{{totalPage}}</span>
+            <table style="width:80%; text-align:center; margin: 20px 0px;">
+                <thead>
+                    <th>신장</th>
+                    <th>체중</th>
+                    <th>인바디 점수</th>
+                    <th>체지방율</th>
+                    <th>골격근량</th>
+                </thead>
+                <tr>
+                    <td><input type="number" id="inbody_input_height" class="inbody_create_input" required></td>
+                    <td><input type="number" id="inbody_input_weight" class="inbody_create_input" required></td>
+                    <td><input type="number" id="inbody_input_score" class="inbody_create_input"></td>
+                    <td><input type="number" id="inbody_input_fat" class="inbody_create_input"></td>
+                    <td><input type="number" id="inbody_input_muscle" class="inbody_create_input"></td>
+                    <td><button id="inbody_create_button" class="jaksim_btn">추가</button></td>
+                </tr>
+            </table>
+            <table style="width: 100%; text-align:center; margin: 10px auto;" id="inbody_datatable">
+                <thead>
+                    <th>등록번호</th>
+                    <th>신장</th>
+                    <th>체중</th>
+                    <th>인바디 점수</th>
+                    <th>체지방율</th>
+                    <th>골격근량</th>
+                    <th>작성 일자</th>
+                </thead>
+                <tbody id="table_tbody"></tbody>
+            </table>
+            <div style="text-align: center; padding-bottom: 30px;">
+                <button id="inbody_prevbutton" class="jaksim_btn jaksim_font"><-</button>
+                <span id="inbody_pagenumber" class="jaksim_font">1</span>
+                <button id="inbody_nextbutton" class="jaksim_btn jaksim_font">-></button>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+{{>layout/footer}}

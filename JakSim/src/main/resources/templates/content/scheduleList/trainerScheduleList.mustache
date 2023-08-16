@@ -1,0 +1,58 @@
+{{>layout/header}}
+<script src="/javascript/scheduleList/trainer/root.js"></script>
+<script src="/javascript/scheduleList/trainer/scheduler.js"></script>
+<script src="/javascript/timetable/trainer/timetable.js"></script>
+<script src="/javascript/reservation/trainer/reservation.js"></script>
+<link rel="stylesheet" href="/css/scheduleList/trainer/scheduleListStyle.css">
+<link rel="stylesheet" href="/css/scheduleList/trainer/timetableStyle.css">
+</head>
+<body>
+{{>layout/navi}}
+<div class="container">
+    <div id="schedulerTitle">스케줄 관리</div>
+    <div id="scheduler">
+        <table class="Calendar">
+            <thead>
+            <tr>
+                <td id ="calbutton" onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
+                <td colspan="5">
+                    <span id="calYear"></span>년
+                    <span id="calMonth"></span>월
+                </td>
+                <td id ="calbutton" onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
+            </tr>
+
+            <tr colspan="15">
+                <td id="sun">일</td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <td id="sat">토</td>
+            </tr>
+            </thead>
+
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div id="timetable">
+        <div id="timetableDetail">
+            <p id="title">시간표</p>
+
+            <div id = timetableList></div>
+
+            <button id="timetableBtn" class="jaksim_btn" type="button" >시간표 관리</button>
+        </div>
+        <div id="reservationDetail">
+            <p id="title">예약 회원 관리</p>
+
+            <div id="timetable_user_inlist">
+                <span id="reservation_list"></span>
+            </div>
+        </div>
+    </div>
+
+</div>
+{{>layout/footer}}

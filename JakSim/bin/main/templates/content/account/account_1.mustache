@@ -1,0 +1,42 @@
+{{>layout/header}}
+<link rel="stylesheet" href="/css/account/accountStyle.css">
+<script src="/javascript/account/account_1.js"></script>
+</head>
+
+<body>
+{{>layout/navi}}
+
+<div class="container">
+    <div class="account_container" id="account_parent_container">
+        <div style="text-align: center;">
+            <h1 onclick="window.location.href='/';" class="account_head">작심득근</h1>
+        </div>
+        <div>
+            <div class="input_container">
+                <div>
+                    <span class="jaksim_font">아이디</span>
+                </div>
+                <input class="account_input" id="account_userid" type="text" placeholder="아이디를 여기에 입력해주세요"/>
+            </div>
+
+            <span id="account_id_result" style="margin-bottom: 30px;"></span>
+
+            <div class="input_container">
+                <div id="account_span_container"><span class="account_span jaksim_font">비밀번호</span></div>
+                <div id="account_input_container" class="account_input_container">
+                    <input type="password" id="account_pw_input" class="account_input" placeholder="비밀번호를 입력해주세요">
+                    <input type="password" id="account_confirm_pw" class="account_input" placeholder="비밀번호를 확인해주세요">
+                </div>
+                <div id="account_span_message_container">
+                    <span id="account_pw_message" style="color:red"></span>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 30px;">
+            <button id="account_1_next" class="jaksim_btn" onclick="goNext()" disabled>이동</button>
+        </div>
+    </div>
+
+</div>
+
+{{>layout/footer}}

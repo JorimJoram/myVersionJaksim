@@ -1,0 +1,86 @@
+<link rel="stylesheet" href="/css/trainer/trainerControlPage.css">
+<script src="/javascript/trainer/trainerControlPage.js"></script>
+<script src="https://kit.fontawesome.com/05995ac069.js" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+        <div>
+            <h3 class="right_info jaksim_title_font">PT 시간 등록</h3>
+        </div>
+        <div class="user_data-container">
+            <table id="timetable_register">
+                <thead>
+                <tr>
+                    <th>수업시간</th>
+                    <th>PT 타입</th>
+                    <th>인원수</th>
+                </tr>
+                </thead>
+                <form action="/trainer/ptTimetableDelete" method="POST">
+                    {{#timetable}}
+                    <tbody>
+                    <tr>
+                        <td>
+                            <i class="fa-regular fa-clock" style="color: #a584ee; margin-right:4px;"></i>
+                            <input style="pointer-events: none; border: white; " type="time" id="start_time_1" name="tStartT" value="{{tStartT}}" readonly disabled> ~
+                            <input style="pointer-events: none; border: white; margin-left: 20px;" type="time" id="end_time_1" name="tEndT" value="{{tEndT}}" readonly disabled>
+                        </td>
+                        <td>
+                            <input style="width: 50px;
+                    margin-right: 20px;
+                    margin-left: 20px; border: white; text-align: center; pointer-events: none;" type="text" name="tType" value="{{tType}}" class="tType" readonly />
+                        </td>
+                        <td>
+                            <span style=" width: 50px;
+                            margin-right: 20px;
+                            margin-left: 20px; border: white; text-align: center; pointer-events: none;">{{tPeople}} </span> 
+                        </td>
+                        <td style="padding-left: 50px;">
+                            <input type="hidden" name="tIdx" value="{{tIdx}}">
+                            <button style="background: none; border: none; box-shadow: none; outline: none;">
+                                <i id="delete_timetable" class="fa-solid fa-trash-can fa-lg"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+                {{/timetable}}
+                </form>
+            </table>
+        </div>
+        <div class="user_insert-container">
+            <table>
+                <thead>
+                <tr>
+                    <th>수업날짜</th>
+                    <th>수업시간</th>
+                    <th>PT 타입</th>
+                    <th>인원수</th>
+                </tr>
+                </thead>
+                <form action="/trainer/ptTimetableRegister" method="POST">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <input type="date" id="tDate" class="jaksim_font" name="tDate" required>
+                        </td>
+                        <td>
+                            <input style="width: 120px;" type="time" id="tStartT" class="jaksim_font" name="tStartT" required> ~
+                            <input style="width: 120px;" type="time" id="tEndT" class="jaksim_font" name="tEndT" required>
+                        </td>
+                        <td>
+                            <input type="radio" name="tType" value="0">상담
+                            <input type="radio" name="tType" value="1" checked>1:1
+                            <input type="radio" name="tType" value="2">단체
+                        </td>
+                        <td>
+                            <input style="width: 40px; text-align: center;" type="number" class="jaksim_font" name="tPeople" value="1">
+                        </td>
+                        <td>
+                            <button style="background: none; border: none; box-shadow: none; outline: none;">
+                                <i id="insert-timetable" class="fa-regular fa-calendar-plus fa-xl"></i></button>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </form>
+            </table>
+        </div>
+    </div>

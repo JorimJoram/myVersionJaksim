@@ -1,0 +1,18 @@
+<div class="mypage_container">
+    <div><h5 class="mypage_title">로그인 내역</h5></div>
+    <h6>미완성;; axios로 페이징 처리 해야합니다</h6>
+    <table class="log_table" style="text-align: center;">
+        <thead>
+            <th>접속 번호</th>
+            <th>접속 IP</th>
+            <th>접속 일자</th>
+        </thead>
+        {{#access_log}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{ip}}</td>
+            <td>{{dt}}</td>
+        </tr>
+        {{/access_log}}
+    </table>
+</div>

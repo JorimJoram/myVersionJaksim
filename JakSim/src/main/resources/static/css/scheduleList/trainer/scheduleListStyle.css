@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#timetable_layout {
+    background-color : white;
+    height: 900px;
+    width: 80%;
+    padding: 15px;
+    margin: auto;
+
+    border-radius:5px;
+}
+
+#scheduler {
+    width: 800px;
+    height: 580px;
+    float: left;
+    margin-top: 10px;
+    padding: 30px 30px 15px;
+
+    background-color: white;
+    border: 2px solid #A584EE;
+    border-radius: 5%;
+}
+
+#schedulerTitle {
+    font-size: 25px;
+    color: #A584EE;
+    font-weight: bold;
+}
+
+td {
+    width: 50px;
+    height: 50px;
+}
+
+.Calendar {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.Calendar>thead>tr:first-child {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+
+    color: rgba(116, 116, 116, 1);
+
+}
+
+
+#sun {
+    color: #fd6a6a;
+}
+#sat {
+    color: #5d73fd;
+}
+
+.Calendar>thead>tr:last-child {
+    height: 100px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: rgba(116, 116, 116, 1);
+
+    font-weight: 1000;
+}
+
+#calbutton {
+    color: #A584EE;
+
+}
+
+#calMonth, #calYear {
+    padding-bottom: 5px;
+
+    font-family: 'Noto Sans KR', sans-serif;
+    color: rgba(116, 116, 116, 1);
+
+}
+
+.Calendar>tbody>tr>td>p {
+    height: 45px;
+    width: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    display: block;
+    transition-duration: .2s;
+
+    border-radius: 45px;
+    line-height: 45px;
+
+    font-family: 'Noto Sans KR', sans-serif;
+    text-align: center;
+}
+
+.pastDay {
+    color: lightgray;
+    cursor: pointer;
+}
+
+.pastDay:hover{
+    background:#eee;
+}
+
+.today {
+    box-shadow:inset 0px 0px 0px 2px #A584EE;
+    color: rgba(116, 116, 116, 1);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.futureDay {
+    color: rgba(116, 116, 116, 1);
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.futureDay:hover{
+    background:#eee;
+}
+
+.futureDay.choiceDay,
+.today.choiceDay,
+.pastDay.choiceDay  {
+    background: #A584EE;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.ptDay {
+    color: #1cc81c;
+    font-weight: bold;
+}
+
+/*#timetable {*/
+/*    width: 30%;*/
+/*    height: 600px;*/
+/*    float: right;*/
+
+/*    background: white;*/
+/*    padding-left: 5px;*/
+/*    margin-top: 7%*/
+/*}*/
+
+/*#timetableDetail {*/
+/*    height: 80px;*/
+/*    margin-bottom: 15px;*/
+
+/*    background: white;*/
+/*    border-radius: 20px;*/
+/*    border: 2px solid rgba(196, 196, 196, 1);*/
+/*}*/
+
+/*#reservationBtn {*/
+/*    !*-webkit-border-radius: 28;*!*/
+/*    !*-moz-border-radius: 28;*!*/
+/*    border-radius: 28px;*/
+/*    font-family: 'Questrial', sans-serif;*/
+/*    color: #A584EE;*/
+/*    font-size: 14px;*/
+/*    font-weight: bold;*/
+/*    background: #ffffff;*/
+/*    padding: 3px 30px 3px 30px;*/
+/*    border: solid #A584EE 2px;*/
+/*    text-decoration: none;*/
+
+/*    position: relative;*/
+/*    left: 190px;*/
+/*    top: 30px;*/
+/*}*/
+
+/*#reservationBtn:hover {*/
+/*    background: #A584EE;*/
+/*    text-decoration: none;*/
+/*    color: white;*/
+/*}*/
+
+/*.todayTimetable {*/
+/*    position:relative;*/
+/*    top: 10px;*/
+/*    left: 15px;*/
+
+/*    font-family: 'Questrial', sans-serif;*/
+/*    font-size: 15px;*/
+/*    font-weight: bold;*/
+/*    color: rgba(116, 116, 116, 1);*/
+/*}*/
+
+/*#todayTimetableTitle {*/
+/*    font-family: 'Questrial', sans-serif;*/
+/*    font-size: 16px;*/
+/*    font-weight: bold;*/
+/*}*/
+
+label {
+   font-size: 15px;
+   line-height: 2rem;
+   padding: 0.2em 0.4em;
+}
+
+span {
+    vertical-align: middle;
+}
+
+/*[type="radio"] {*/
+/*    vertical-align: middle;*/
+/*    appearance: none;*/
+/*    border: max(2px, 0.1em) solid gray;*/
+/*    border-radius: 50%;*/
+/*    width: 1.25em;*/
+/*    height: 1.25em;*/
+/*    transition: border 0.5s ease-in-out;*/
+/*}*/
+
+/*[type="radio"]:checked {*/
+/*    border: 0.4em solid rgba(165, 132, 238, 1);*/
+/*}*/
+
+/*[type="radio"]:focus-visible {*/
+/*    outline-offset: max(2px, 0.1em);*/
+/*    outline: max(2px, 0.1em) dotted rgba(165, 132, 238, 1);*/
+/*}*/
+
+/*[type="radio"]:hover {*/
+/*    box-shadow: 0 0 0 max(4px, 0.2em) lightgray;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*[type="radio"]:disabled {*/
+/*    background-color: lightgray;*/
+/*    box-shadow: none;*/
+/*    opacity: 0.7;*/
+/*    cursor: not-allowed;*/
+/*}*/
+
+/*[type="radio"]:disabled + span {*/
+/*    opacity: 0.7;*/
+/*    cursor: not-allowed;*/
+/*}*/
+
+
+
+
+
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+

@@ -1,0 +1,171 @@
+<script>
+// Move the setSelectedFilter() function outside the Handlebars template, so it's in the global scope
+function setSelectedFilter() {
+  var selectedFilter = "{{filter}}";
+  var filterSelect = document.getElementById('filter');
+  for (var i = 0; i < filterSelect.options.length; i++) {
+      if (filterSelect.options[i].value === selectedFilter) {
+          filterSelect.selectedIndex = i;
+          break;
+      }
+  }
+}
+</script>
+
+{{>layout/header}}
+<link rel="stylesheet" href="/css/trainer/trainerPage.css">
+<script src="/javascript/trainer/trainerPage.js"></script>
+<script src="https://kit.fontawesome.com/05995ac069.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<body>
+{{>layout/navi}}
+<div id="trainer_Detail_Container">
+    <br/>
+    <span class="jaksim_title_font" style="font-weight: bold; font-size: 19px;">트레이너 리뷰</span>
+    <hr>
+    <div id="review-container" style="margin-bottom: 20px;">
+        <br/>
+            <div class="review-filters" style="margin-top: 10px;">
+                <i class="fa-solid fa-star fa-xl" style="color: #f3eb12; margin-bottom:10px;"></i> 
+                <span style="font-size:19px; font-weight: bold; margin-top: 20px;">
+                {{#stars}}{{avgRstar}}{{/stars}} </span>
+                <span style="font-size:15px; margin-top: 20px;">
+                ({{#stars}}{{reviewCnt}}{{/stars}}개) </span>
+                <select id="filter" name="filter" style="margin-left: 700px;" onchange="updateFilter()">
+                    <option value="0">최신순</option>
+                    <option value="1">별점 높은순</option>
+                    <option value="2">별점 낮은순</option>
+                </select>
+            </div>
+            {{#review}}
+            <div class="review">
+                <table>
+            <tbody id="review-form">
+                <tr id="review-{{reviewId}}">
+                    <td>작심<span class="reviewIdx">{{reviewId}}</span></td>
+                    <td class="countStar" style="width: 100px;" data-star="{{star}}">{{star}}</td>
+                    <td style="width: 420px;">{{reviewContent}}</td>
+                    <td data-date="{{reviewCreateDate}}">{{reviewCreateDate}}</td>
+                    <td class="reviewLink"> {{userId}}
+                    </td>
+                    <td class="delete_review_td" hidden="hidden">
+                        <form id="delete-review-form" action="/deleteReview" method="POST" style="margin-bottom: 0px;" onsubmit="return confirm('리뷰를 삭제하시겠습니까?');">
+                            {{#trainer}}
+                                <input type="hidden" name="trainerId" value="{{trainerId}}">
+                                <input type="submit" value="삭제" style="background-color:
+                                transparent; border: none; text-decoration: underline; padding: 0;">
+                            {{/trainer}}
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+            </div>
+            {{/review}}
+
+            <div id="pagination">
+    <a href="/trainer/review/{{#trainer}}{{userId}}{{/trainer}}?page={{prevPage}}&pageSize={{reviewPageSize}}&filter={{filter}}" class="jaksim_btn" style="margin-right:5px; padding-left: 10px; padding-right: 10px;padding-bottom: 6px;padding-top: 6px; text-decoration: none;">이전</a>
+
+    {{#pageNumbers}}
+    <a href="/trainer/review/{{#trainer}}{{userId}}{{/trainer}}?page={{.}}&pageSize={{reviewPageSize}}&filter={{filter}}" style="margin-left:5px; margin-right:5px; color: black;">{{.}}</a>
+    {{/pageNumbers}}
+
+    <a href="/trainer/review/{{#trainer}}{{userId}}{{/trainer}}?page={{nextPage}}&pageSize={{reviewPageSize}}&filter={{filter}}" class="jaksim_btn" style="margin-left:5px; padding-left: 10px; padding-right: 10px;padding-bottom: 6px;padding-top: 6px; text-decoration: none;">다음</a>
+</div>
+    </div>
+</div>
+
+<script>
+
+window.onload = function() {
+
+    var currentUser = "{{session_user.username}}";
+    var reviewElements = document.querySelectorAll('.reviewLink');
+    var deleteReviewForm = document.querySelectorAll('.delete_review_td');
+    var reviewIdx = document.querySelectorAll('.reviewIdx');
+
+    if (currentUser) {
+        for (var i = 0; i < reviewElements.length; i++) {
+            var reviewId = reviewElements[i].textContent;
+
+            if (currentUser.trim() === reviewId.trim()) {
+                reviewElements[i].textContent = '';
+                currentUser.textContent = '';
+
+                var editLink = document.createElement('a');
+                editLink.href = "/review/editReview/" + reviewIdx[i].textContent;
+                editLink.className = "jaksim_font";
+                editLink.textContent = "수정";
+
+                deleteReviewForm[i].hidden = false;
+
+                reviewElements[i].appendChild(editLink);
+            }
+            else {
+                reviewElements[i].textContent = '';
+                deleteReviewForm[i].hidden = true;
+
+            }
+        }
+    }
+
+    var stars = document.querySelectorAll('.countStar');
+    var expert1 = document.querySelectorAll('.expert1');
+    var expert2 = document.querySelectorAll('.expert2');
+
+
+    for(var i=0; i<stars.length; i++) {
+        var starCount = parseInt(stars[i].textContent);
+        stars[i].textContent = '';
+
+        for(var j=0; j<starCount; j++) {
+            var starIcon = document.createElement('i');
+            starIcon.className = 'fa-solid fa-star';
+            starIcon.style.color = '#f3eb12';
+            stars[i].appendChild(starIcon);
+        }
+        
+    }
+
+    setSelectedFilter();
+    
+
+    
+}
+
+function updateFilter() {
+        var selectedFilter = document.getElementById('filter').value;
+        var currentUrl = new URL(window.location.href);
+
+        // 현재 페이지가 1일 때만 필터를 적용합니다.
+        if (currentUrl.searchParams.get('page') === '1') {
+            // 'filter' 매개변수의 값을 설정합니다.
+            currentUrl.searchParams.set('filter', selectedFilter);
+            window.location.href = currentUrl.toString();
+        } else {
+            // 'page' 매개변수의 값을 1로 설정합니다.
+            currentUrl.searchParams.set('page', '1');
+            // 'filter' 매개변수의 값을 설정합니다.
+            currentUrl.searchParams.set('filter', selectedFilter);
+            window.location.href = currentUrl.toString();
+        }
+        
+    }
+
+    // Function to set the selected option in the select element
+    function setSelectedFilter() {
+        var selectedFilter = "{{filter}}";
+        var filterSelect = document.getElementById('filter');
+        for (var i = 0; i < filterSelect.options.length; i++) {
+            if (filterSelect.options[i].value === selectedFilter) {
+                filterSelect.selectedIndex = i;
+                break;
+            }
+        }
+    }
+
+
+</script>
+{{>layout/footer}}

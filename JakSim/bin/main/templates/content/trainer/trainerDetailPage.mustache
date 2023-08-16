@@ -1,0 +1,314 @@
+{{>layout/header}}
+<link rel="stylesheet" href="/css/trainer/trainerPage.css">
+<script src="/javascript/payment/kakaoPay/kakaoPay.js"></script>
+<script src="https://kit.fontawesome.com/05995ac069.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/javascript/review/review.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<body>
+{{>layout/navi}}
+<div id="trainer_Detail_Container">
+    <br/>
+    <span class="jaksim_title_font" style="font-weight: bold; font-size: 19px;">트레이너 상세페이지</span>
+    <br/><br/>
+    {{#trainer}}
+    <div id="trainer-info">
+        <img src="{{profile}}" alt="Trainer Image" width='270' height='270' style="border-radius: 5%;  object-fit: cover; object-position: top center;"/>
+
+        <div id="trainer-table">
+                <span class="expert1" style="background-color: #E9E1FB;
+                    border-radius: 20px;
+                    border: none;
+                    padding: 10px;
+                    width: 120px;
+                    text-align: center;
+                    font-weight: bold;
+                    margin-bottom: 20px;">{{expert1}}
+                </span>
+                <span class="expert2" style="background-color: #E9E1FB;
+                    border-radius: 20px;
+                    border: none;
+                    padding: 10px;
+                    width: 120px;
+                    text-align: center;
+                    font-weight: bold;
+                    margin-bottom: 10px;">{{expert2}}
+                </span><br/><br/>
+            <div id="trainer_name" style="margin-bottom: 6px;">
+                <span style="margin-bottom: 30px;">{{userName}} 트레이너</span>
+            </div>
+
+            <div style="display: flex; align-items: center; margin-bottom: 6px;">
+                <p style="margin-right: 5px; margin-top: 15px;"><i class="fa-sharp fa-solid fa-location-dot fa-xl" style="color: #ca7cfd;"></i></p>
+                <div id="trainer_gym">
+                    <span>{{gym}} ({{address}})</span>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center;">
+                <div>
+                    <i class="fa-brands fa-instagram fa-xl" style="margin-right: 6px; margin-top: 5px;"></i>
+                </div>
+                <div id="trainer_insta">
+                    <span>{{insta}}</span>
+                </div>
+            </div>
+        </div>
+    </div> <br/>
+    <hr/>
+
+    <div id="trainerInfoList" style="margin-left: 10px">
+        <span style="font-weight: bold; font-size: 16px;">트레이너 자기소개</span>
+        <div id="trainer-intro">
+            <span>{{introduce}}</span>
+        </div>
+        <br><br/>
+    {{/trainer}}
+
+        <span style="font-weight: bold; font-size: 16px;">자격증</span>
+            <div id="trainer-cert">
+            {{#cert}}
+                <span>{{certName}}</span><br/>
+            {{/cert}}
+            </div>
+
+        <br><br/>
+
+        <span style="font-weight: bold; font-size: 16px;">경력 / 수상사항</span>
+            <div id="trainer-career">
+        {{#career}}
+                <span>{{careerContent}}</span> <br/>
+        {{/career}}
+            </div>
+        <br><br/>
+        <span style="font-weight: bold; font-size: 16px;">추가 사진</span><br/>
+            <div style="display:inline-block; margin: 7px;">
+        {{#imageList}}
+                <img src="{{imagePath}}" alt="Trainer Image" width="270" height="300"/>
+        {{/imageList}}
+            </div>
+        <br/>
+        <hr/>
+    </div>
+
+    <span style="font-weight: bold; font-size: 16px;">PT 상품</span><br/>
+    {{#product}}
+            <div id="pt-info">
+            <span style="width: 150px;">{{ptTitle}}</span>
+            <span style="width: 45px;">{{ptTimes}}회</span>
+            <span style="width: 100px;" class="money">{{ptPrice}}원</span>
+
+
+            <div class="trainer_pay" style="margin-right: 5px;">
+                <button class="payButton" data-ptId="{{ptId}}"
+                onclick="kakaoPay('{{ptTitle}}', '{{ptId}}', '{{ptPrice}}', '{{ptTimes}}', '{{ptPeriod}}')"
+                >결제하기</button>
+            </div>
+             </div>
+    {{/product}}
+
+
+    <br/>
+    <hr>
+    <div id="review-container" style="margin-bottom: 50px;">
+        <span class="jaksim_font" style="font-weight: bold; font-size: 16px;">PT 리뷰</span>
+        <br/>
+            <div class="review-filters" style="margin-top: 10px; width: 450px;">
+                <i class="fa-solid fa-star fa-xl" style="color: #f3eb12; margin-bottom:10px;"></i>
+                <span id="review_avg_star" style="font-size:19px; font-weight: bold; margin-top: 20px;">{{#stars}}{{avgRstar}}{{/stars}}</span>
+                <span style="font-size:15px; margin-top: 20px;">
+                ({{#stars}}{{reviewCnt}}{{/stars}}개) </span>
+                <a href="/trainer/review/{{#trainer}}{{trainerId}}{{/trainer}}" style="color: #747474; font-size:13px; ">리뷰 전체보기</a>
+            </div>
+            {{#review}}
+            <div class="review">
+                <table>
+            <tbody id="review-form">
+                <tr id="review-{{idx}}">
+                    <td>작심<span class="reviewIdx">{{idx}}</span></td>
+                    <td class="countStar" style="width: 100px;" data-star="{{star}}">{{star}}</td>
+                    <td style="width: 420px;">{{content}}</td>
+                    <td data-date="{{c_dt}}">{{c_dt}}</td>
+                    <td class="reviewLink"> {{userId}}
+                    </td>
+                    <td class="delete_review_td" hidden="hidden">
+                        <form id="delete-review-form" action="/deleteReview" method="POST" style="margin-bottom: 0px;" onsubmit="return confirm('리뷰를 삭제하시겠습니까?');">
+                            {{#trainer}}
+                                <input type="hidden" name="trainerId" value="{{trainerId}}">
+                                <input type="submit" value="삭제" style="background-color:
+                                transparent; border: none; text-decoration: underline; padding: 0;">
+                            {{/trainer}}
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+            </div>
+            {{/review}}
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.money').each(function () {
+            var money = $(this).text();
+            var money2 = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            $(this).text(money2);
+        });
+    });
+
+    window.onload = function() {
+    var currentUser = "{{session_user.username}}";
+    var reviewElements = document.querySelectorAll('.reviewLink');
+    var deleteReviewForm = document.querySelectorAll('.delete_review_td');
+    var reviewIdx = document.querySelectorAll('.reviewIdx');
+
+    var reviewAvg = document.getElementById('review_avg_star');
+    getAvgStar(reviewAvg);
+
+    if (currentUser) {
+        for (var i = 0; i < reviewElements.length; i++) {
+            var reviewId = reviewElements[i].textContent;
+
+            if (currentUser.trim() === reviewId.trim()) {
+                reviewElements[i].textContent = '';
+                currentUser.textContent = '';
+
+                var editLink = document.createElement('a');
+                editLink.href = "/review/editReview/" + reviewIdx[i].textContent;
+                editLink.className = "jaksim_font";
+                editLink.textContent = "수정";
+
+                deleteReviewForm[i].hidden = false;
+
+                reviewElements[i].appendChild(editLink);
+            }
+            else {
+                reviewElements[i].textContent = '';
+                deleteReviewForm[i].hidden = true;
+
+            }
+        }
+    }
+
+    var stars = document.querySelectorAll('.countStar');
+    var expert1 = document.querySelectorAll('.expert1');
+    var expert2 = document.querySelectorAll('.expert2');
+
+
+    for(var i=0; i<stars.length; i++) {
+        var starCount = parseInt(stars[i].textContent);
+        stars[i].textContent = '';
+
+        for(var j=0; j<starCount; j++) {
+            var starIcon = document.createElement('i');
+            starIcon.className = 'fa-solid fa-star';
+            starIcon.style.color = '#f3eb12';
+            stars[i].appendChild(starIcon);
+        }
+        
+    }
+    
+
+    for(var i=0; i<expert1.length; i++) {
+        var experts = parseInt(expert1[i].textContent);
+        var experts2 = parseInt(expert2[i].textContent);
+
+        if(experts == 0) {
+            expert1[i].textContent = '';
+            var exText = document.createElement('span');
+            exText.className = 'expert';
+            exText.textContent = '#바디프로필';
+            expert1[i].appendChild(exText);
+        }
+        else if(experts == 1) {
+            expert1[i].textContent = '';
+            var exText = document.createElement('span');
+            exText.className = 'expert';
+            exText.textContent = '#파워리프팅';
+            expert1[i].appendChild(exText);
+        }
+        else if(experts == 2) {
+            expert1[i].textContent = '';
+            var exText = document.createElement('span');
+            exText.className = 'expert';
+            exText.textContent = '#다이어트';
+            expert1[i].appendChild(exText);
+        }
+        else if(experts == 3) {
+            expert1[i].textContent = '';
+            var exText = document.createElement('span');
+            exText.className = 'expert';
+            exText.textContent = '#재활운동';
+            expert1[i].appendChild(exText);
+        }
+        else if(experts == 4) {
+            expert1[i].textContent = '';
+            var exText = document.createElement('span');
+            exText.className = 'expert';
+            exText.textContent = '#자세교정';
+            expert1[i].appendChild(exText);
+        }
+        else if(experts == 5) {
+            expert1[i].textContent = '';
+            var exText = document.createElement('span');
+            exText.className = 'expert';
+            exText.textContent = '#컨디셔닝';
+            expert1[i].appendChild(exText);
+        }
+
+
+        if(experts2 == 0) {
+            expert2[i].textContent = '';
+            var exText = document.createElement('span');
+            exText.className = 'expert';
+            exText.textContent = '#바디프로필';
+            expert2[i].appendChild(exText);
+        }
+        else if(experts2 == 1) {
+            expert2[i].textContent = '';
+            var exText = document.createElement('span');
+            exText.className = 'expert';
+            exText.textContent = '#파워리프팅';
+            expert2[i].appendChild(exText);
+        }
+        else if(experts2 == 2) {
+            expert2[i].textContent = '';
+            var exText = document.createElement('span');
+            exText.className = 'expert';
+            exText.textContent = '#다이어트';
+            expert2[i].appendChild(exText);
+        }
+        else if(experts2 == 3) {
+            expert2[i].textContent = '';
+            var exText = document.createElement('span');
+            exText.className = 'expert';
+            exText.textContent = '#재활운동';
+            expert2[i].appendChild(exText);
+        }
+        else if(experts2 == 4) {
+            expert2[i].textContent = '';
+            var exText = document.createElement('span');
+            exText.className = 'expert';
+            exText.textContent = '#자세교정';
+            expert2[i].appendChild(exText);
+        }
+        else if(experts2 == 5) {
+            expert2[i].textContent = '';
+            var exText = document.createElement('span');
+            exText.className = 'expert';
+            exText.textContent = '#컨디셔닝';
+            expert2[i].appendChild(exText);
+        }
+    
+    }
+
+
+
+}
+
+
+
+</script>
+
+{{>layout/footer}}

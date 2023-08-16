@@ -1,0 +1,19 @@
+{{>layout/header}}
+    <script src="/javascript/root.js"></script>
+    <script src="/javascript/mypage/mypage.js"></script>
+    <link rel="stylesheet" href="/css/trainer/trainerSide.css">
+</head>
+
+<body>
+{{>layout/navi}}
+
+    <div id="mypage_container">
+        <aside>
+            {{>content/trainer/trainer_aside}}
+        </aside>
+        <section>
+            {{>content/trainer/trainerControlpage}}
+        </section>
+    </div>
+
+{{>layout/footer}}

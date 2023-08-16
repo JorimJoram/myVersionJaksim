@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#timetable_layout {
+    background-color : white;
+    height: 900px;
+    width: 80%;
+    padding: 15px;
+    margin: auto;
+
+    border-radius:5px;
+}
+
+#scheduler {
+    width: 800px;
+    height: 580px;
+    float: left;
+    padding: 30px 30px 15px;
+
+    background-color: white;
+    border: 2px solid #A584EE;
+    border-radius: 5%;
+}
+
+td {
+    width: 50px;
+    height: 50px;
+}
+
+.Calendar {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.Calendar>thead>tr:first-child {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+
+    color: rgba(116, 116, 116, 1);
+
+}
+
+
+#sun {
+    color: #fd6a6a;
+}
+#sat {
+    color: #5d73fd;
+}
+
+.Calendar>thead>tr:last-child {
+    height: 100px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: rgba(116, 116, 116, 1);
+
+    font-weight: 1000;
+}
+
+#calbutton {
+    color: #A584EE;
+
+}
+
+#calMonth, #calYear {
+    padding-bottom: 5px;
+
+    font-family: 'Noto Sans KR', sans-serif;
+    color: rgba(116, 116, 116, 1);
+
+}
+
+.Calendar>tbody>tr>td>p {
+    height: 45px;
+    width: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    display: block;
+    transition-duration: .2s;
+
+    border-radius: 45px;
+    line-height: 45px;
+
+    font-family: 'Noto Sans KR', sans-serif;
+    text-align: center;
+}
+
+.pastDay {
+    color: lightgray;
+}
+
+.today {
+    box-shadow:inset 0px 0px 0px 2px #A584EE;
+    color: rgba(116, 116, 116, 1);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.futureDay {
+
+    color: rgba(116, 116, 116, 1);
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.futureDay:hover{
+    background:#eee;
+}
+
+.futureDay.choiceDay,
+.today.choiceDay {
+    background: #A584EE;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.ptDay {
+    color: #1cc81c;
+    font-weight: bold;
+}
+
+label {
+    font-size: 15px;
+    line-height: 2rem;
+    padding: 0.2em 0.4em;
+}
+
+span {
+    vertical-align: middle;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}

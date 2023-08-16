@@ -1,0 +1,21 @@
+{{>layout/header}}
+<link rel="stylesheet" href="/css/mypage/mypageStyle.css">
+<script src="/javascript/mypage/auth.js"></script>
+</head>
+
+<body>
+{{>layout/navi}}
+
+    <div class="container" style="text-align: center;">
+        <div style="text-align: center;">
+            <h1 onclick="window.location.href='/';" id="auth_head">작심득근</h1>
+            <p style="margin-top: 30px; font-size: 15px;">비밀번호를 입력해주세요</p>
+        </div>
+        <div id="auth_pwContainer">
+            <input id="pwInput" type="password"/>
+            <button id="pwButton" class="jaksim_btn">확인버튼</button>
+            <span id="mypage_failureSpan"></span>
+        </div>
+    </div>
+
+{{>layout/footer}}

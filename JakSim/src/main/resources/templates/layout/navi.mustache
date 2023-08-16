@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" >
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/" id="nav-head">작심득근</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {{#isTrainer}}
+                    <li class="nav-item">
+                        <a class="nav-link nav_font" href="/scheduler">스케줄러</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav_font" href="/trainer/trainerSearch">트레이너 찾기</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav_font" href="/trainer/trainerUpdate/{{#name}}{{trainerId}}{{/name}}">트레이너 페이지</a>
+                    </li>
+                {{/isTrainer}}
+                {{^isTrainer}}
+                    <li class="nav-item">
+                        <a class="nav-link nav_font" href="/scheduler">스케줄러</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav_font" href="/trainer/trainerSearch">트레이너 찾기</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav_font" href="/trainer/trainerRegister">트레이너 등록</a>
+                    </li>
+                {{/isTrainer}}
+                {{#isAdmin}}
+                    <li class="nav-item">
+                        <a class="nav-link nav_font" href="/man/main">관리자 페이지</a>
+                    </li>
+                {{/isAdmin}}
+            </ul>
+            {{#session_user}}
+                {{#session_profile}}
+                    <li class="nav-item d-flex">
+                        <a href="/mypage/auth"><img src="{{session_profile.path}}" alt="profile" id="navi_profile_img"></a>
+                    </li>
+                {{/session_profile}}
+                {{^session_profile}}
+                    <li class="nav-item d-flex">
+                        <a href="/mypage/auth"><img src="/image/profiles/profile.jpg" alt="profile" id="navi_profile_img"></a>
+                    </li>
+                {{/session_profile}}
+                <li class="nav-item d-flex" id="navi_userInfo">
+                    <a class="nav-link nav_font" href="/mypage/auth" id="navi_username">{{session_user.username}}</a>
+                </li>
+                <li class="nav-item d-flex">
+                    <span class="nav-link" id="nav_time">-- : --</span>
+                </li>
+                <li class="nav-item d-flex" style="margin-left:7px">
+                    <a class="nav-link jaksim_font" href="/logout">로그아웃</a>
+                </li>
+            {{/session_user}}
+            {{^session_user}}
+                <li class="nav-item d-flex" style="margin-left:7px">
+                    <a class="nav-link nav_font" href="/login">로그인</a>
+                </li>
+                <li class="nav-item d-flex" style="margin-left:7px;">
+                    <a class="nav-link nav_font" href="/account/1">회원가입</a>
+                </li>
+            {{/session_user}}
+        </div>
+    </div>
+</nav>
+<script>
+    showSessionValidTime();
+</script>

@@ -1,0 +1,41 @@
+{{>layout/header}}
+    <link rel="stylesheet" href="/css/account/accountStyle.css">
+    <script src="/javascript/account/account_2.js"></script>
+</head>
+
+<body>
+{{>layout/navi}}
+
+<div class="container">
+    <div class="account_container">
+        <div style="text-align: center;">
+            <h1 onclick="window.location.href='/';" class="account_head">작심득근</h1>
+        </div>
+
+        <div>
+            <span class="account_span">이름</span>
+        </div>
+        <div class="input_container">
+            <input type="text" class="account_input" id="account_name" placeholder="이름을 입력해주세요" oninput="validateKorean(this)">
+            <p style="font-size: 13px; color: red;">이름은 한글로 작성해주세요</p>
+        </div>
+
+        <div>
+            <span class="account_span">생년월일</span>
+        </div>
+        <div class="input_container">
+            <input type="date" class="account_input" id="account_birth">
+        </div>
+
+        <div>
+            <span class="account_span">성별</span>
+        </div>
+        <div class="input_container">
+            <label><input type="radio" name="account_gender" id="account_gender_male" value="0">남</label>
+            <label><input type="radio" name="account_gender" id="account_gender_female" value="1">여</label>
+        </div>
+        <button id="account_2_next" class="jaksim_btn">확인</button>
+    </div>
+</div>
+
+{{>layout/footer}}

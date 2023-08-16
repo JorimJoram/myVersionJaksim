@@ -1,0 +1,71 @@
+aside{
+    float:left;
+    height: 1650px;
+    width: 350px;
+    border-left: 1px solid #d0d0d0;
+    border-right: 1px solid #d0d0d0;
+
+    box-shadow: 5px 0px 10px #d0d0d0;
+}
+
+section{
+    float: right;
+    height: 95%;
+    width: 70%;
+    margin-left: 100px;
+}
+
+#mypage_container{
+    width: 85%;
+    margin: 0rem auto;
+    display: flex;
+}
+
+#mypage_aside_profileImgContainer{
+    margin-top: 3rem;
+    width: 100%;
+    text-align: center;
+    padding: 5%;
+}
+
+#mypage_aside_profileImg{
+    width: 30%;
+    border-radius: 50%;
+    border: 0.15rem solid #8753F6;
+}
+
+#mypage_delete{
+    clear:both;
+    margin: 5rem;
+}
+
+#mypage_aside_username, #mypage_aside_email, #mypage_aside_loginspan{
+    text-align: center;
+    color:#575757;
+}
+
+#mypage_aside_loginspan{
+    color: #8753F6;
+    font-weight: bold;
+}
+
+#mypage_aside_banner{
+    margin: 2.5rem 1rem 2.5rem 1rem;
+    padding: 10px;
+    border: 0.2px solid #8753F6;
+    border-radius: 5px;
+    background-color: #f2ecff;
+
+    text-align: center;
+}
+
+#mypage_aside_nav > ul > li{
+    list-style-type: none;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+#mypage_aside_nav > ul > li > a{
+    text-decoration-line: none;
+    color: #575757;
+}

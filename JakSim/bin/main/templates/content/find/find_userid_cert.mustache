@@ -1,0 +1,24 @@
+{{>layout/header}}
+    <link rel="stylesheet" href="/css/find/findStyle.css">
+    <script src="/javascript/find/findId_2.js"></script>
+    <script src="/javascript/email/certEmail.js"></script>
+</head>
+
+<body>
+{{>layout/navi}}
+
+    <div class="container">
+        <div>
+            <h1>Cert</h1>
+            <input type="text" id="find_validate_input">
+            <button id="resend_button">재전송</button>
+            <button id="validate_button">인증</button>
+            <span id="find_validate_time">-- : --</span>
+        </div>
+        <div>
+            <span id="find_validate_fail" style="color: red;"></span>
+            <span id="find_validate_success"></span>
+        </div>
+    </div>
+
+{{>layout/footer}}

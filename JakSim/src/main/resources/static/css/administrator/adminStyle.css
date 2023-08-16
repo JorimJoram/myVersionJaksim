@@ -1,0 +1,80 @@
+a{
+    text-decoration: none;
+}
+.man_aside{
+    float:left;
+    padding: 10px;
+
+    width: 30%;
+}
+
+.man_section{
+    float: right;
+
+    width: 70%;
+    padding: 10px;
+}
+
+#carouselExample{
+    height: 300px;
+}
+
+#man_main_aside_login{
+    width: 300px;
+    height: 300px;
+    background-color: #3B86F5;
+    margin: auto;
+}
+
+#man_main_aside_loginHeader, #man_main_aside_loginContent{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#man_main_aside_loginHeader{
+    height: 20%;
+    border-bottom: 0.05rem solid white;
+}
+
+#man_main_aside_loginHeader > span{
+    color: white;
+    font-size: 19px;
+}
+
+#man_main_aside_loginContent{
+    height: 80%;
+}
+
+#man_main_aside_loginUsers{
+    color: white;
+    font-size: 29px;
+}
+
+#man_main_aside_userInfoContainer{
+    width: 300px;
+    height: 300px;
+    margin: 50px auto;
+
+    border-collapse: separate;
+    border-spacing: 10px;
+
+    table-layout: fixed;
+}
+
+.man_main_aside_userInfo{
+    background-color: lightgray;
+    margin: 30px;
+    box-sizing: border-box;
+
+    width: 150px;
+    height: 150px;
+
+    text-align: center;
+}
+
+.man_main_aside_userInfo > span {
+    display: block;
+    color: white;
+}

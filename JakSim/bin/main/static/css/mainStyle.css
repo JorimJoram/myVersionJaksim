@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+
+.container{
+    width: 90%;
+    margin: 1rem auto;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.jaksim_btn{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+
+    border: 0.09rem solid #949494;
+    border-radius: 7px;
+    padding-left: 10px; 
+    padding-right: 10px;
+    padding-bottom: 6px;
+    padding-top: 6px; 
+
+    text-align: center;
+
+    background-color: #E9E1FB;
+    color: #747474;
+}
+
+.jaksim_btn:hover, .jaksim_btn:active, .jaksim_btn:disabled{
+    background-color: #C8B0FC;
+    border: 0.09rem solid #C8B0FC;
+    color: #FFFFFF;
+}
+
+.jaksim_font{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+
+    color: #747474;
+}
+
+.jaksim_title_font{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 19px;
+    font-weight: bold;
+
+    color: #000000;
+}
+
+
+
+#navi_userInfo{
+    margin-left:7px;
+}
+
+#navi_profile_img{
+    width: 40px;
+    height:40px;
+    border-radius: 50%;
+    border: 1px solid #C8B0FC;
+    object-fit: cover;
+}
+
+#nav_time{
+    margin: 0px 5px 0px 5px;
+    color:#C8B0FC;
+}
+
+#nav-head{
+    color: #C8B0FC;
+    font-weight: bold;
+}
+
+.nav_font{
+    font-family: 'Noto Sans KR', sans-serif;
+    color:#747474;
+}
+
+.nav-link:hover{
+    color: black;
+}
+
+.jaksim_withdraw_btn{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+
+    border: 2px solid #ff0000;
+    border-radius: 7px;
+    padding: 6px 6px 6px 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 6px;
+    padding-top: 6px;
+
+    background-color: #ffffff;
+    color: #ff0000;
+}
+.jaksim_withdraw_btn:hover, .jaksim_withdraw_btn:active, .jaksim_withdraw_btn:disabled{
+    background-color: #ff0000;
+    border: 2px solid #ff0000;
+    color: #FFFFFF;
+}
+
+.jaksim_register_btn{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+
+    border: 2px solid #256BF4;
+    border-radius: 7px;
+    padding: 6px 6px 6px 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 6px;
+    padding-top: 6px;
+
+    background-color: #ffffff;
+    color: #256BF4;
+}
+.jaksim_register_btn:hover, .jaksim_register_btn:active, .jaksim_register_btn:disabled{
+    background-color: #256BF4;
+    border: 2px solid #256BF4;
+    color: #FFFFFF;
+}
+
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    /*font-weight: bold;*/
+
+    color: #747474;
+}
+
+.error_img{
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+
+    opacity: 0.7;
+
+    object-fit: cover;
+}
+
+.email_time_font{
+    color:red;
+}
+
+.email_input{
+    border: none;
+     border-bottom: 1px solid black;
+
+     margin-top: 20px;
+     margin-right: 5px;
+     width: 60%;
+
+     font-family: 'Noto Sans KR', sans-serif;
+     font-size: 17px;
+     color: black;
+}

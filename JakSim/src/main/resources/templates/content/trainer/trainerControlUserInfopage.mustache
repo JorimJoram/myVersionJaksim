@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="/css/trainer/trainerUserInfoControlPage.css">
+<script src="/javascript/trainer/trainerUserInfoControlPage.js"></script>
+<script src="https://kit.fontawesome.com/05995ac069.js" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+        <div>
+            <h3 class="right_info jaksim_title_font">전체 회원 정보 조회</h3>
+        </div>
+        <div class="search-container">
+            <div class="search-input-container">
+                <input style="width: 222px;" type="text" class="search-input" placeholder="회원명을 입력하세요" id="search-input">
+                <a id="search-btn" style="cursor: pointer;" class="search-icon"><i id="searchIcon" class="fa-solid fa-magnifying-glass fa-sm"></i></a>
+            </div>
+        </div>
+        <div class="user_data-container">
+            <table>
+                <thead>
+                <tr>
+                    <th>회원명</th>
+                    <th>PT 타입</th>
+                    <th>아이디</th>
+                    <th>전화번호</th>
+                    <th>성별</th>
+                    <th>PT 잔여 횟수</th>
+                </tr>
+                </thead>
+                <tbody id="table-body">
+                    {{#ptUser}}
+                        <tr class="hidden-row">
+                            <td><input class="userInfo-1" type="text" name="userName" value="{{userName}}" readonly>
+                            </td>
+                            <td><input class="userInfo-1" type="text" name="ptType" value="{{ptType}}" readonly>
+                            </td>
+                            <td><input class="userInfo-2" type="text" name="userId" value="{{userId}}" readonly>
+                            </td>
+                            <td><input class="userInfo-3" type="text" name="tel" value="{{tel}}" readonly>
+                            </td>
+                            <td><input class="userInfo-1" type="text" name="gender" value="{{gender}}" readonly>
+                            </td>
+                            <td><input class="userInfo-1" type="text" name="ptCnt" value="{{ptCnt}}" readonly>
+                            </td>
+                        </tr>
+                    {{/ptUser}}
+                    </tbody>
+                </table>
+
+        <div id="pagination" style="margin-top: 30px;">
+            <a href="/trainer/ptUserInfo?page={{prevPage}}&pageSize={{trainersPerPage}}&ptUserName={{ptUserName}}" class="jaksim_btn" style="padding-left: 10px; padding-right: 10px;padding-bottom: 6px;padding-top: 6px; text-decoration: none;">이전</a>
+
+            {{#pageNumbers}}
+            <a href="/trainer/ptUserInfo?page={{.}}&pageSize={{trainersPerPage}}&ptUserName={{ptUserName}}" style="margin-left:5px; color: black;">{{.}}</a>
+            {{/pageNumbers}}
+
+            <a href="/trainer/ptUserInfo?page={{nextPage}}&pageSize={{trainersPerPage}}&ptUserName={{ptUserName}}" class="jaksim_btn" style="padding-left: 10px; padding-right: 10px;padding-bottom: 6px;padding-top: 6px; margin-left: 5px; text-decoration: none;">다음</a>
+        </div>
+    </div>
+</div>  

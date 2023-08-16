@@ -1,0 +1,23 @@
+{{>layout/header}}
+    <script src="/javascript/find/findId_1.js"></script>
+    <link rel="stylesheet" href="/css/find/findStyle.css">
+    <script src="/javascript/email/certEmail.js"></script>
+</head>
+
+<body>
+{{>layout/navi}}
+
+    <div class="container">
+        <div class="find_title_container">
+            <h1 style="color:#C8B0FC; font-size: 50px;">작심득근</h1>
+            <p class="find_center_ment">등록하셨던 이메일을 입력해주세요</p>
+        </div>
+        <div class="find_input_container">
+            <input id="find_valid_email" type="email" placeholder="이메일을 입력해주세요!">
+            <button id="find_valid_useridCheck" class="jaksim_btn">등록확인</button>
+            <span style="display:block;" id="find_valid_span"></span>
+        </div>
+
+    </div>
+
+{{>layout/footer}}

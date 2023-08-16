@@ -1,0 +1,18 @@
+{{>layout/header}}
+<link rel="stylesheet" href="/css/payment/refund.css">
+</head>
+<body>
+{{>layout/navi}}
+<div id="content">
+    <div id="title">
+    환불 완료
+    </div>
+    <hr>
+    <div class="jaksim_font" id="details">
+        <div id="pidx">결제 번호 : {{refund.tid}}</div>
+        <div id="pcDt">결제 일자 : {{refund.c_dt}}</div>
+        <div id="pmDt">환불 일자 : {{refund.m_dt}}</div>
+    </div>
+    <hr>
+</div>
+{{>layout/footer}}

@@ -1,0 +1,35 @@
+<div id="mypage_aside_profileImgContainer">
+
+    <a href="/mypage/profile">
+        {{#session_profile}}
+            <img src="{{session_profile.path}}" alt="profile" id="mypage_aside_profileImg">
+        {{/session_profile}}
+        {{^session_profile}}
+            <img src="/image/profiles/profile.jpg" alt="profile" id="mypage_aside_profileImg">
+        {{/session_profile}}
+        <button onclick="window.location.href=''">+</button>
+    </a>
+
+</div>
+<h3 id="mypage_aside_username" class="jaksim_font">{{session_user.username}}</h3>
+<h6 id="mypage_aside_email" class="jaksim_font">{{user_info.email}}</h6>
+
+<div id="mypage_aside_nav">
+    <ul style="margin: 50px auto;">
+        <li><a href="/mypage/profile" class="jaksim_font aside_item">내프로필</a></li>
+        <li><a href="/payment/list" class="jaksim_font aside_item">내가 작성한 리뷰</a></li>
+        <li><a href="/payment/list" class="jaksim_font aside_item">결제 목록</a></li>
+        <li><a href="/mypage/inbody" class="jaksim_font aside_item">인바디</a></li>
+    </ul>
+</div>
+
+{{#log}}
+    <div id="mypage_aside_banner" onclick="location.href='/mypage/{{session_user.username}}/history/login'" style="cursor:pointer">
+        <span id="mypage_aside_loginspan">[최근 로그인] {{log.dt}}</span>
+    </div>
+{{/log}}
+{{^log}}
+    <div id="mypage_aside_banner" onclick="location.href='/mypage/{{session_user.username}}/profile'" style="cursor:pointer">
+        <span id="mypage_aside_loginspan">프로필을 더 멋지게 만들어보세요!</span>
+    </div>
+{{/log}}

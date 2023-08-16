@@ -1,0 +1,91 @@
+{{>layout/header}}
+<link rel="stylesheet" href="/css/trainer/trainerSearch.css">
+<script src="https://kit.fontawesome.com/05995ac069.js" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/javascript/trainer/trainerSearch.js"></script>
+
+{{>layout/navi}}
+<div id="index_container">
+    <div id="findTrainerWrapper">
+        <div id="findTrainer_container" style="width: 1000px;">
+            <div id="location" style="width: 1000px;">
+                <a onclick="road()" style="cursor: pointer;"><i class="fas fa-sharp fa-solid fa-location-dot fa-xl" style="color: #ca7cfd;" id="location"></i>
+                <input readonly name="address" type="text" value="{{address}}" id="input-address" style="pointer-events: none; width: 850px; border: white; border-radius: 5px; "/></a>
+                <br>
+            </div>
+
+            <div id="button_container">
+                <input type="radio" name="toggle" value="0" id="toggle-body-profile" class="toggle-btn">
+                <label for="toggle-body-profile" class="toggle-label jaksim_font">바디프로필</label>
+
+                <input type="radio" name="toggle" value="1" id="toggle-power-lifting" class="toggle-btn">
+                <label for="toggle-power-lifting" class="toggle-label jaksim_font">파워리프팅</label>
+
+                <input type="radio" name="toggle" value="2" id="toggle-diet" class="toggle-btn">
+                <label for="toggle-diet" class="toggle-label jaksim_font">다이어트</label>
+
+                <input type="radio" name="toggle" value="3" id="toggle-rehab" class="toggle-btn">
+                <label for="toggle-rehab" class="toggle-label jaksim_font">재활운동</label>
+
+                <input type="radio" name="toggle" value="4" id="toggle-posture" class="toggle-btn">
+                <label for="toggle-posture" class="toggle-label jaksim_font">자세교정</label>
+
+                <input type="radio" name="toggle" value="5" id="toggle-condition" class="toggle-btn">
+                <label for="toggle-condition" class="toggle-label jaksim_font">컨디셔닝</label>
+            </div>
+            <div class="trainer-container">
+                {{#trainer}}
+                    <div class="trainer-item" data-expert1="{{expert1}}" data-expert2="{{expert2}}">
+                        <a href="/trainer/{{trainerId}}">
+                            <div class="find_trainer_crop">
+                                <img src="{{profile}}" style="margin-bottom: 10px;" alt="트레이너" class="find_trainer_profile">
+                            </div>
+
+                            <div>
+                                <span><i class="fas fa-sharp fa-solid fa-location-dot fa-xl" style="color: #ca7cfd; margin-right: 5px;"></i>{{gym}}</span><br/>
+                            </div>
+                            <div>
+                                <span>{{userName}} <i class="fas fa-solid fa-star" style="color: #f3eb12;"></i> {{avgRstar}}</span>
+                            </div>
+                            <div>
+                                <span class="searchExpert1">{{expert1}}</span>
+                                <span class="searchExpert2">{{expert2}}</span>
+                            </div>
+                            <div>
+                                <span><i class="fas fa-sharp fa-solid fa-medal" style="color: #0f57ff;"></i>{{certName}}</span>
+                            </div>
+                            <input hidden="hidden" value="{{address}}">
+                        </a>
+                    </div>
+                {{/trainer}}
+            </div>
+            <div id="pagination">
+                <a href="/trainer/trainerSearch?page={{prevPage}}&pageSize={{trainersPerPage}}&filter={{filter}}&address={{address}}" class="jaksim_btn" style="margin-right:5px; padding-left: 10px; padding-right: 10px;padding-bottom: 6px;padding-top: 6px; text-decoration: none;">이전</a>
+
+                {{#pageNumbers}}
+                <a href="/trainer/trainerSearch?page={{.}}&pageSize={{trainersPerPage}}&filter={{filter}}&address={{address}}" style="margin-left:5px; margin-right:5px; color: black;">{{.}}</a>
+                {{/pageNumbers}}
+
+                <a href="/trainer/trainerSearch?page={{nextPage}}&pageSize={{trainersPerPage}}&filter={{filter}}&address={{address}}" class="jaksim_btn" style="margin-left:5px; padding-left: 10px; padding-right: 10px;padding-bottom: 6px;padding-top: 6px; text-decoration: none;">다음</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{>layout/footer}}
+
+<script>
+    // 라디오 버튼 체크 표시
+    let specificValue = {{filter}}; // The value you want to select
+
+    let radioButtons = document.querySelectorAll('input[name="toggle"]');
+
+    radioButtons.forEach(radioButton => {
+    if (radioButton.value === String(specificValue)) {
+    radioButton.checked = true;
+    }
+    });
+
+</script>
+

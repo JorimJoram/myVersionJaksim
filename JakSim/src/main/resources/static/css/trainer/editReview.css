@@ -1,0 +1,94 @@
+/*@font-face {
+  font-family: 'Noto Sans KR';
+  src: url('/path/to/noto-sans-kr.woff2') format('woff2'),
+       url('/path/to/noto-sans-kr.woff') format('woff'),
+       url('/path/to/noto-sans-kr.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}*/
+
+/*body {
+  font-family: 'Noto Sans KR', sans-serif;
+}*/
+
+/*h1, h2, h3, h4, h5, h6 {
+  font-family: 'Noto Sans KR', sans-serif;
+}*/
+
+#review-main-content {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 500px;
+    margin-right: 500px;
+}
+
+#review-form {
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 20px;
+  height: 500px;
+  margin-top: 10px;
+  margin-bottom: 100px;
+  margin-left: 50px;
+  width: 742px;
+
+
+
+}
+
+#review-content {
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 15px;
+  width: 100%;
+  height: 60%;
+
+  line-height: 100%;
+  line-weight: 100%;
+
+  resize: vertical;
+  vertical-align: top;
+  word-wrap: break-word;
+}
+
+#review-content input[type="text"] {
+   width: 100%;
+   height: 100%;
+   box-sizing: border-box;
+ }
+
+ #review-content input[type="text"]::placeholder {
+   text-align: top;
+ }
+
+.star_select {
+  border: 1px solid gray;
+  background-color: #FFFFFF;
+  color: gray;
+  border-radius: 10px;
+  padding: 5px;
+  width: 10%;
+}
+
+#review-edit-button {
+  border: none;
+  background-color: #E9E1FB;
+  color: black;
+  border-radius: 10px;
+  padding: 10px 20px;
+  width: 100px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+#review-cancel-button {
+  border: none;
+  background-color: gray;
+  color: black;
+  border-radius: 10px;
+  padding: 10px 20px;
+  width: 100px;
+  cursor: pointer;
+  display: inline-block;
+}

@@ -1,0 +1,41 @@
+{{>layout/header}}
+<link rel="stylesheet" href="/css/trainer/editReview.css">
+<script src="/javascript/review/createReview.js"></script>
+<body>
+{{>layout/navi}}
+<div>
+    <h3 class="jaksim_title_font" style="position: relative;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: 50px;">리뷰 등록</h3>
+</div>
+<div id="review-form">
+        <div class="review-star">
+            <label for="review-star">별점</label>
+            <select class="star_select" id="star" name="star" style="margin-left: 10px;">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div class="review-content" style="
+        margin-bottom: 15px; margin-top: 15px;">
+            <label for="review-content">내용</label><br/>
+            <input type="text" id="reviewContent" name="reviewContent" style="
+        width: 701px;height: 306px;border: 1px solid gray;border-radius: 10px;margin-top: 10px;padding-left: 10px;
+        "/>
+            <br/>
+        </div>
+    <button type="button" id="save_button" onclick="saveListener()">저장</button>
+    <button type="button" id="review-cancel-button" onclick="goBack()">취소</button>
+    <script>
+        function goBack() {
+            // Go back to the previous page in the browser's history
+            window.history.back();
+        }
+    </script>
+</div>
+
+{{>layout/footer}}

@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/man/main">관리자 페이지</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+        </div>
+        {{#session_user}}
+            {{#session_profile}}
+                <li class="nav-item d-flex">
+                    <a href="/mypage/auth"><img src="{{session_profile.path}}" alt="profile" id="navi_profile_img"></a>
+                </li>
+            {{/session_profile}}
+            {{^session_profile}}
+                <li class="nav-item d-flex">
+                    <a href="/mypage/auth"><img src="/image/profiles/profile.jpg" alt="profile" id="navi_profile_img"></a>
+                </li>
+            {{/session_profile}}
+            <li class="nav-item d-flex" id="navi_userInfo">
+                <a class="nav-link nav_font" href="/mypage/auth" id="navi_username">{{session_user.username}}</a>
+            </li>
+            <li class="nav-item d-flex">
+                <span class="nav-link" id="nav_time">-- : --</span>
+            </li>
+            <li class="nav-item d-flex">
+                <a href="/mypage/auth" class="nav-link nav_font">마이페이지</a>
+            </li>
+            <li class="nav-item d-flex" style="margin-left:7px">
+                <a class="nav-link jaksim_font" href="/logout">로그아웃</a>
+            </li>
+        {{/session_user}}
+    </div>
+</nav>
+<script>
+    showSessionValidTime();
+</script>

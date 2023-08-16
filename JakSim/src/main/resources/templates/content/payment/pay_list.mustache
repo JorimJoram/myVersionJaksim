@@ -1,0 +1,31 @@
+{{>layout/header}}
+    <link rel="stylesheet" href="/css/payment/payment.css">
+    <script src="/javascript/payment/payment.js"></script>
+</head>
+
+<body>
+{{>layout/navi}}
+
+    <div class="container">
+        <table id="pay_list_table">
+            <thead>
+                <th class="pay_list_headfont"></th>
+                <th class="pay_list_headfont">주문 상태</th>
+                <th class="pay_list_headfont">주문 번호</th>
+                <th class="pay_list_headfont">트레이닝 이름</th>
+                <th class="pay_list_headfont">가격(원)</th>
+                <th class="pay_list_headfont">등록 일자</th>
+                <th class="pay_list_headfont">결제 상세</th>
+            </thead>
+            <tbody id="pay_list_tbody">
+            </tbody>
+        </table>
+        <div id="payment_page_container">
+            <button id="payment_prev_button"><-</button>
+            <span id="payment_page_num">1</span>
+            <button id="payment_next_button">-></button>
+            <span style="display:none" id="payment_total_page">{{total_page}}</span>
+        </div>
+    </div>
+
+{{>layout/footer}}

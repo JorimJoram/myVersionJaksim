@@ -1,0 +1,27 @@
+{{>layout/header}}
+<script src="/javascript/review/review.js"></script>
+</head>
+
+<body>
+{{>layout/navi}}
+
+    <div class="container">
+        <table id="review_list_table">
+            <thead id="review_list_headfont">
+                <th>등록번호</th>
+                <th>트레이너</th>
+                <th>내용</th>
+                <th>별점</th>
+                <th>작성일자</th>
+            </thead>
+            <tbody id="review_list_tbody"></tbody>
+        </table>
+        <div id="review_page_container">
+            <button id="review_prev_button"><-</button>
+            <span id="review_page_num">1</span>
+            <button id="review_next_button">-></button>
+            <span style="display:none" id="review_total_page">{{!total_page}}</span>
+        </div>
+    </div>
+
+{{>layout/footer}}

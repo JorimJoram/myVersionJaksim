@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+
+.wrapper {
+    width: 100%;
+    margin: 10px auto;
+    position: relative;
+}
+
+.payment_form {
+    position: absolute;
+    margin: 90px 130px;
+    width: 300px;
+
+    border-color: #E9E1FB;
+    border-radius: 20px;
+    border-width: 10px;
+}
+
+#form_title {
+    width: 60px;
+    display: inline-block;
+}
+
+#item_code {
+    display: none;
+}
+
+
+.value_font {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+
+    color: #747474;
+}
+
+#modalCloseBtn {
+    margin: 10px 45%;
+}
+

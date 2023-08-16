@@ -1,0 +1,86 @@
+#pay_detail_container{
+    font-family: 'Noto Sans KR', sans-serif;
+    width: 60%;
+    margin: 10px auto;
+}
+
+.pay_detail_smallHeader{
+    margin: 30px auto;
+    font-size:20px;
+    font-weight: bold;
+}
+
+#pay_detail_payInfoTable{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border-top: 2px solid #747474;
+    border-bottom: 1px solid #747474;
+}
+
+#pay_detail_payInfoTable > thead{
+    background-color: #e4e4e4;
+}
+
+#pay_detail_payTable{
+    border-collapse: collapse;
+    border-top: 2px solid #747474;
+    border-bottom: 1px solid #747474;
+    width: 100%;
+}
+
+#pay_detail_payTable  tr  td:first-child{
+    background-color: #e4e4e4;
+    width: 20%;
+    height: 30px;
+    border-top: 0.01px solid #747474;
+    border-bottom: 0.09px solid #747474;
+    padding: 3px 10px;
+}
+
+#pay_detail_payTable  tr  td:nth-child(2){
+    padding-left: 10px;
+    width: 60%;
+}
+
+#pay_detail_trainerImage{
+    width: 145px;
+    height: 145px;
+    object-fit: cover;
+}
+
+#pay_detail_trainerInfoContainer {
+  display: flex;
+  align-items: flex-start; /* 이미지와 테이블의 상단 정렬 */
+}
+
+#pay_detail_trainerImage {
+  margin-right: 20px; /* 이미지와 테이블 사이 간격 설정 */
+}
+
+#pay_detail_trainerInfoTable, #pay_detail_trainerReviewTable {
+  border-collapse: collapse;
+  border-top: 2px solid #747474;
+  border-bottom: 1px solid #747474;
+  width: 100%;
+}
+
+#pay_detail_trainerInfoTable  tr  td:first-child{
+    background-color: #e4e4e4;
+    width: 20%;
+    height: 30px;
+    border-top: 0.01px solid #747474;
+    border-bottom: 0.09px solid #747474;
+    padding: 3px 10px;
+}
+
+#pay_detail_trainerInfoTable  tr  td:nth-child(2){
+    padding-left: 10px;
+    width: 60%;
+}
+
+#pay_detail_buttonContainer{
+    width: 100%;
+    padding: 30px;
+    text-align:center;
+}

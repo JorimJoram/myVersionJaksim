@@ -1,0 +1,87 @@
+{{>layout/header}}
+    <link rel="stylesheet" href="/css/administrator/adminStyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+    <script src="/javascript/administrator/main/mainAction.js"></script>
+    <script src="/javascript/administrator/main/linearChart.js"></script>
+    <script src="/javascript/administrator/main/areaChart.js"></script>
+    <script src="/javascript/administrator/main/asideData.js"></script>
+</head>
+
+<body>
+{{>content/administrator/layout/man_navi}}
+
+<div class="container">
+    <aside class="man_aside">
+
+        <div id="man_main_aside_login" class="rounded">
+            <a href="/session/list">
+            <div id="man_main_aside_loginHeader">
+                <span>금일 로그인 접속한 유저</span>
+            </div>
+            <div id="man_main_aside_loginContent">
+                <div>
+                    <p id="man_main_aside_loginUsers">0,000</p>
+                    <p style="color: white; font-size: 24px;">Users</p>
+                </div>
+            </div>
+            </a>
+        </div>
+
+        <table id="man_main_aside_userInfoContainer">
+            <tr><th colspan="2"><span>기준일자: </span><span id="man_aside_Yesterday"></span></th></tr>
+            <tr>
+                <td class="man_main_aside_userInfo rounded" style="background-color:#82cea8;">
+                    <span>회원가입 수</span>
+                    <span id="man_main_aside_visitCntToday">0000</span>
+                </td>
+                <td class="man_main_aside_userInfo rounded" style="background-color:#db7c65;">
+                    <span>로그인 수</span>
+                    <span id="man_main_aside_visitCntYesterday">0000</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="man_main_aside_userInfo rounded" style="background-color:#688bd0;">
+                    <span>등록 회원 수</span>
+                    <span id="man_main_aside_registeredAccounts">0000</span>
+                    <span></span>
+                </td>
+                <td class="man_main_aside_userInfo rounded" style="background-color:#d8a849;">
+                    <span>트레이너 등록 비율</span>
+                    <span id="man_main_aside_ratioTrainer">0,000</span>
+                </td>
+            </tr>
+        </table>
+
+    </aside>
+
+    <section class="man_section">
+        <div>
+            <p>* 데이터가 존재하지 않는 경우, 차트에 그려지지 않습니다.</p>
+        </div>
+        <h4 id="man_section_linearHead"></h4>
+        <table style="width: 50%;">
+            <tr>
+                <td><input id="radio_first" name="linear-range" type="radio" value="tweek" checked>최근 2주</input></td>
+                <td><input name="linear-range" type="radio" value="amon">최근 1개월</input></td>
+                <td><input name="linear-range" type="radio" value="tmon">최근 3개월</input></td>
+            </tr>
+        </table>
+        <div>
+            <canvas id="man_main_linearChart" style="height: 300px; width: 100%;"></canvas>
+        </div>
+
+        <h4 id="man_section_areaHead" style="margin-top: 30px;"></h4>
+        <table style="width: 50%;">
+            <tr>
+                <td><input id="radio_first" name="area-range" type="radio" value="tweek" checked>최근 2주</input></td>
+                <td><input name="area-range" type="radio" value="amon">최근 1개월</input></td>
+                <td><input name="area-range" type="radio" value="tmon">최근 3개월</input></td>
+            </tr>
+        </table>
+        <div>
+            <canvas id="man_main_areaChart" style="height: 320px; width:100%;"></canvas>
+        </div>
+    </section>
+</div>
+
+{{>layout/footer}}

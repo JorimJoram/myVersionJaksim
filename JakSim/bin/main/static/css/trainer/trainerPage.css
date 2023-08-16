@@ -1,0 +1,149 @@
+#trainer_Detail_Container {
+    margin-top: 10px;
+  margin-left: 300px;
+  width: min-content;
+}
+
+#trainer-info {
+    display: flex;
+    align-items: center;
+  }
+  #trainer-info img {
+    margin-right: 20px;
+  }
+  #trainer-info table {
+    border-collapse: collapse;
+    font-size: 16px;
+  }
+
+  #trainer_name input[type="text"] {
+    border: none;
+    width: 500px;
+  }
+
+
+  #trainer_gym input[type="text"] {
+      border: none;
+      width: 500px;
+  }
+
+  #trainer_insta input[type="text"] {
+         border: none;
+         width: 500px;
+  }
+
+  #trainer-cert {
+      margin-left: 10px;
+    }
+   #trainer-intro{
+        margin-left: 10px;
+      }
+    #trainer-career {
+         margin-left: 10px;
+       }
+
+ #pt-info {
+  display: flex;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+
+    overflow: hidden;
+
+  }
+
+    #pt-info span {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 5px;
+    font-size: 15px;
+    margin-left: 5px;
+    border: none;
+    }
+
+    #pt-info .trainer_pay {
+    margin-left: 350px;
+    float: right;
+    }
+
+  .payButton{
+    background-color: #A584EE;
+    width: 120px;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+.review {
+  background-color: #E9E1FB;
+  border: 2px solid #E9E1FB;
+  width: 850px;
+  border-radius: 10px;
+  padding: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 10px;
+}
+
+.review-filters {
+  margin-bottom: 10px;
+  margin-left: 50px;
+  width: 150px;
+}
+
+.review-filters select {
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: black;
+  background-color: #FFFFFF;
+  color: black;
+}
+
+
+.review-idx {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.star-container {
+  display: flex;
+  align-items: center;
+}
+
+.review-star {
+  font-size: 15px;
+}
+
+.review-content {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+#review-button button {
+  background-color: #E9E1FB;
+  border: none;
+  text-decoration: underline;
+
+}
+
+
+td {
+    padding-right: 10px;
+}
+
+#pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; 
+}

@@ -1,0 +1,94 @@
+{{>layout/header}}
+    <script src="/javascript/scheduleList/general/root.js"></script>
+    <script src="/javascript/scheduleList/general/scheduler.js"></script>
+    <script src="/javascript/trainer/trainerBrief.js"></script>
+    <script src="/javascript/product/ptList.js"></script>
+    <script src="/javascript/reservation/general/reservation.js"></script>
+    <script src="/javascript/timetable/general/timetable.js"></script>
+    <link rel="stylesheet" href="/css/scheduleList/general/scheduleListStyle.css">
+    <link rel="stylesheet" href="/css/scheduleList/general/ptListStyle.css">
+    <link rel="stylesheet" href="/css/scheduleList/general/trainerDetailsStyle.css">
+    <link rel="stylesheet" href="/css/scheduleList/general/timetableStyle.css">
+</head>
+<body>
+{{>layout/navi}}
+<div class="container">
+    <div id="select-pt">
+        <span id="pt_type"></span>
+        <span id="pt_cnt"></span>
+
+        <select name="ptList" id="trainer_list" ="selectbox"></select>
+    </div>
+    <div id="scheduler">
+        <table class="Calendar">
+            <thead>
+                <tr>
+                    <td id ="calbutton" onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
+                    <td colspan="5">
+                        <span id="calYear"></span>년
+                        <span id="calMonth"></span>월
+                    </td>
+                    <td id ="calbutton" onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
+                </tr>
+
+                <tr colspan="15">
+                    <td id="sun">일</td>
+                    <td>월</td>
+                    <td>화</td>
+                    <td>수</td>
+                    <td>목</td>
+                    <td>금</td>
+                    <td id="sat">토</td>
+                </tr>
+            </thead>
+
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div id="trainer2" class="jaksim_font">
+        <div id="trainer-details" method="get" action="/ScheduleList/trainer">
+            <h6 id="title"><b/>트레이너 상세 정보</h6>
+            <br>
+            <input id="trainer-info" type="image" src="" >
+            <div id="trainerDetail">
+                <a href="" id="trainerName"></a>
+                <br>
+
+                <b>성별 : </b>
+                <span id="gender"></span>
+                <br>
+
+                <b>헬스장 : </b>
+                <span id="gym"></span>
+                <br>
+
+                <b>전문 분야 : </b>
+                <span id="expert"></span>
+                <br>
+
+                <a href="" id="insta"><img src="/image/instaImg.png" alt="instaLink"></a>
+            </div>
+        </div>
+    </div>
+    <div id="timetable">
+        <div id="timetableDetail">
+            <p id="title">예약시간</p>
+
+            <div id = timetableList></div>
+
+            <button id="reservationBtn" class="jaksim_btn" type="button" >예약하기</button>
+        </div>
+        <div id="timetable_date_wrapper">
+            <div id="reservation_date"></div>
+
+            <div id="timetable_user_inlist">
+                <span id="reservation_list"></span>
+
+                <button id="resCancleBtn" class="jaksim_btn">예약 취소</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+{{>layout/footer}}

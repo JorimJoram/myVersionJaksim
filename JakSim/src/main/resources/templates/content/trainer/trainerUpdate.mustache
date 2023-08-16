@@ -1,0 +1,187 @@
+<link rel="stylesheet" href="/css/trainer/trainerRegister.css">
+<link rel="stylesheet" href="/css/trainer/trainerSearch.css">
+<script src="/javascript/trainer/trainerUpdate.js"></script>
+<script src="https://kit.fontawesome.com/05995ac069.js" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<div>
+    <h3 class="right_info jaksim_title_font" style="position: relative;
+    margin-top: 30px;
+    margin-bottom: 50px;">트레이너 정보수정</h3>
+</div>
+<div style="border: 3px solid #E9E1FB;
+    border-radius: 20px;
+    padding-left: 30px; padding-top: 30px; padding-right: 30px; padding-bottom: 30px;">
+<form action="/trainerUpdate" method="POST" enctype="multipart/form-data" onsubmit="return checkExpertValues();">
+    <div class="input_container">
+        <span class="input_span">인스타 링크</span>
+        <input class="input_input" value="{{#trainer}}{{insta}}{{/trainer}}" type="text" name="insta" required>
+    </div>
+    <div class="input_container">
+        <span class="input_span">자기소개</span>
+        <input name="introduce" class="input_input" id="trainer_create_introduce" value="{{#trainer}}{{introduce}}{{/trainer}}" cols="30" rows="10" required />
+    </div>
+    <div class="input_container">
+        <span class="input_span">소속 헬스장</span>
+        <input class="input_input" type="text" value="{{#trainer}}{{gym}}{{/trainer}}" name="gym" required>
+    </div>
+        <div class="input_container">
+                <a onclick="road()" style="cursor: pointer;"><i class="fa-sharp fa-solid fa-location-dot fa-xl" style="color: #ca7cfd;" id="location"></i>
+                <input readonly type="text" required value="{{#trainer}}{{address}}{{/trainer}}" name="address" placeholder="헬스장 주소를 입력하세요" id="input-address" style="pointer-events: none; width: 350px; border: white; border-radius: 5px; "/></a>
+                <br>
+            </div>
+        <br>
+
+    <span style="font-weight:bold" >프로필 사진 등록</span><br>
+    <span style="font-size: 12px;">프로필 사진을 등록해주세요</span><br>
+
+    <input accept="image/*" type="file" name="profileImage1" onchange="previewImage(event)"/><br/>
+    <img id="preview-profile-image" src="{{#trainer}}{{profile}}{{/trainer}}" alt="Profile Image" width="220" height="220"><br/>
+
+    <span style="font-weight:bold">전문분야</span>
+    <span style="font-size: 12px;">2개를 선택해주세요</span><br>
+    <select name="expert1" class="input_select" style="margin-left: 0px;" value="{{#trainer}}{{expert1}}{{/trainer}}">
+        <option value="0">바디프로필</option>
+        <option value="1">파워리프팅</option>
+        <option value="2">다이어트</option>
+        <option value="3">재활운동</option>
+        <option value="4">자세교정</option>
+        <option value="5">컨디셔닝</option>
+    </select>
+    <select name="expert2" class="input_select" value="{{#trainer}}{{expert2}}{{/trainer}}" style="margin-top: 5px; margin-left: 10px;">
+        <option value="0">바디프로필</option>
+        <option value="1">파워리프팅</option>
+        <option value="2">다이어트</option>
+        <option value="3">재활운동</option>
+        <option value="4">자세교정</option>
+        <option value="5">컨디셔닝</option>
+    </select>
+
+    {{#cert}}
+    <div class="input_container">
+        <span class="input_span">자격증</span>
+        <input class="input_input" style="margin-bottom: 5px;" type="text" name="certName" value="{{certName}}" id="certName" required>
+        <input hidden="hidden" type="number" name="certId" value="{{certId}}"/>
+        <div id="create_cert_div"></div>
+    </div>
+    {{/cert}}
+    
+    {{#career}}
+    <div class="input_container">
+        <span class="input_span">경력사항</span>
+        <input class="input_input" style="margin-bottom: 5px;" type="text" name="careerContent" value="{{careerContent}}" id="careerContent" required>
+        <input hidden="hidden" type="number" name="careerId" value="{{careerId}}"/>
+        <div id="create_career_div"></div>
+    </div>
+    {{/career}}
+
+    <div class="input_container">
+        <span style="font-weight:bold">PT 상품 등록</span><br>
+        {{#product}}
+        <select name="ptType" class="input_select ptTypeSelect{{ptId}}" 
+        style="margin-bottom: 5px; height: 26px; font-size: 13px; padding: 3px;">
+            <option value="0" style="font-size: 13px;">개인</option>
+            <option value="1" style="font-size: 13px;">단체</option>
+        </select>
+        <input type="hidden" name="ptTypeValue" value="{{ptType}}"> <br/>
+
+        <input hidden="hidden" type="number" name="ptId" class="ptIdIndex" value="{{ptId}}"/>
+
+        <span class="input_span">횟수</span>
+        <input class="input_input" type="number" name="ptTimes" id="ptTimes" value="{{ptTimes}}" style="margin-bottom:5px;" required>
+        <br>
+        <span class="input_span">PT 제목</span>
+        <input class="input_input" type="text" name="ptTitle" id="ptTitle" value="{{ptTitle}}" style="margin-bottom:5px;" required>
+        <br>
+        <span class="input_span">가격</span>
+        <input class="input_input" type="number" name="ptPrice" id="ptPrice" value="{{ptPrice}}" style="margin-bottom: 5px;" required/>
+        <br>
+
+        <span class="input_span jaksim_font">유효기간</span>
+        <input class="input_input jaksim_font" type="number" name="ptPeriod" id="ptPeriod" value="{{ptPeriod}}" style="margin-bottom:5px;" required />
+        <br/>
+        {{/product}}
+    </div>
+
+    <div class="input_class">
+        <span style="font-weight:bold">추가 이미지 등록</span><br>
+        <span style="font-size: 12px;">자격증, 헬스장 사진 등을 등록해주세요</span><br>
+        
+        <input accept="image/*" type="file" name="imagePath1" onchange="previewImage2(event)" multiple/>
+        <div id="image-preview-container">
+            {{#imageList}}
+            <img src="{{imagePath}}" alt="Image Preview" width="220" height="220">
+            {{/imageList}}
+        </div>
+        <input hidden="hidden" type="number" name="imageId" value="{{#imageList}}{{imageId}}{{/imageList}}"/>
+    </div>
+
+    <br>
+    {{#imageList}}
+        <input type="hidden" name="imagePath" value="{{imagePath}}">
+    {{/imageList}}
+    {{#trainer}}
+        <input type="hidden" name="profile" value="{{profile}}">
+    {{/trainer}}
+    <div style="display: flex;">
+        <button type="submit" class="jaksim_register_btn" 
+        style="height: 38px; padding-left: 10px; padding-right: 10px;padding-bottom: 6px;padding-top: 6px; margin-right: 10px;" 
+        onclick="return confirm('프로필을 저장하시겠습니까?');">저장하기</button>
+</form>
+
+<form action="/trainerDelete" method="POST" onsubmit="return confirm('트레이너 정보를 삭제하시겠습니까?');">
+
+    <button type="submit" style="height: 38px;" class="jaksim_withdraw_btn">정보삭제</button>
+</form>
+</div>
+</div>
+
+
+<script>
+window.onload = function() {
+    var profileImageValue = "{{#trainer}}{{profile}}{{/trainer}}";
+    var previewProfileImage = document.getElementById("preview-profile-image");
+
+    if (profileImageValue === "") {
+        // profileImage가 비어있을 경우 이미지 숨김
+        previewProfileImage.style.display = "none";
+    }
+
+    // expert1 값에 따라 option 선택
+    var expert1Value = "{{#trainer}}{{expert1}}{{/trainer}}";
+    var expert1Select = document.getElementsByName("expert1")[0];  // expert1 select 요소 선택
+
+    // option value에 해당하는 인덱스를 찾아 선택
+    for (var i = 0; i < expert1Select.options.length; i++) {
+        if (expert1Select.options[i].value === expert1Value) {
+            expert1Select.selectedIndex = i;
+            break;
+        }
+    }
+
+    // expert2 값에 따라 option 선택
+    var expert2Value = "{{#trainer}}{{expert2}}{{/trainer}}";
+    var expert2Select = document.getElementsByName("expert2")[0];  // expert2 select 요소 선택
+
+    // option value에 해당하는 인덱스를 찾아 선택
+    for (var j = 0; j < expert2Select.options.length; j++) {
+        if (expert2Select.options[j].value === expert2Value) {
+            expert2Select.selectedIndex = j;
+            break;
+        }
+    }
+
+    {{#product}}
+    var ptTypeValue = parseInt("{{ptType}}");
+    var selectElement = document.querySelector('.ptTypeSelect{{ptId}}');
+
+    if (ptTypeValue === 0) {
+        // 개인을 선택
+        selectElement.selectedIndex = 0;
+    } else if (ptTypeValue === 1) {
+        // 단체를 선택
+        selectElement.selectedIndex = 1;
+    }
+    {{/product}}
+}
+</script>

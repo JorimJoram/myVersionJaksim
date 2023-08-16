@@ -1,0 +1,91 @@
+#account_head{
+    margin-top: 1vh;
+    margin-left: 1vh;
+    margin-bottom: 5vh;
+}
+#trainer_create_container{
+    border: 3px solid #E9E1FB;
+    border-radius: 20px;
+    padding-left: 100px;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+}
+
+.input_container{
+    position: relative;
+    margin: 1vh auto;
+}
+.input_container > .input_span{
+    margin-top: 4px;
+    left:1vh;
+    position:absolute;
+    /*font-weight: bold;*/
+}
+.input_container > .input_input{
+    padding-left: 15vh;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 70%;
+}
+.input_container > #user_id_check{
+    height:1px;
+}
+#user_id_container, #user_tel_container, #user_password_container{
+    margin-left: 5em;
+    /*margin-top: 5vh;*/
+}
+#account_container{
+    margin-left: 5em;
+}
+#duplicate{
+    margin-left: 1em;
+}
+#fin_button{
+    margin: 5vh
+}
+.register_select {
+    margin-left: 8em;
+}
+
+#account_success_container{
+    width:400px;
+    min-height:400px;
+    margin: 200px auto;
+}
+#account_success_container > h1{
+    text-align: center;
+}
+#account_success_container > div{
+    margin: 50px auto;
+}
+.input_select{
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#preview-image {
+    max-width: 500px;
+    max-height: 500px;
+    display: none;
+}
+
+#preview-image2 {
+    max-width: 500px;
+    max-height: 500px;
+    display: none;
+}
+.pt-container {
+border: 1px solid #ccc;
+border-radius: 5px;
+padding: 15px;
+margin-bottom: 10px;
+margin-top: 10px;
+width: 500px;
+
+}

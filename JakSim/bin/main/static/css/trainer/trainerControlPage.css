@@ -1,0 +1,109 @@
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .right_info {
+        color: rgba(29.000000171363354, 29.000000171363354, 32.00000189244747, 1);
+        position: relative;
+        margin-top: 30px;
+        margin-bottom: 50px;
+
+    }
+
+    .user_data-container {
+        width: 770px;
+        margin: 50px 0px;
+        padding: 30px;
+        background-color: white;
+        box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+        border-radius: 7px;
+        float: left;
+        margin-top: 0px;
+        margin-bottom: 15px;
+
+    }
+    .user_insert-container {
+      width: 770px;
+        margin: 50px 0px;
+        padding: 30px;
+        background-color: white;
+        box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+        border-radius: 7px;
+        float: left;
+        margin-top: 0px;
+    }
+
+    table {
+        margin: 0 auto;
+    }
+
+    .search-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        margin-left: 58px;
+    }
+
+    .search-input-container {
+        position: relative;
+        margin-left: 550px;
+    }
+
+    .search-input {
+        width: 250px;
+        height: 30px;
+        border-radius: 5px;
+        border: 1px solid #B7B7B7;
+        padding: 5px 30px 5px 10px;
+        font-size: 14px;
+
+    }
+
+    .search-icon {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        color: #a584ee;
+        visibility: visible;
+
+    }
+
+    th, td {
+        text-align: center;
+    }
+
+    th {
+        padding-bottom: 10px;
+        padding-right: 25px;
+    }
+
+    td {
+
+        padding-top: 20px;
+        padding-bottom: 10px;
+        padding-right: 25px;
+    }
+
+    #timetable_register td {
+        border-bottom: 1px solid #dedede;
+    }
+
+
+    #delete_timetable {
+      color: #a584ee;
+    }
+
+    #delete_timetable:hover {
+        color: #c6b4ec;
+
+    }
+
+    #insert-timetable {
+      color: #a584ee;
+    }
+
+    #insert-timetable:hover {
+      color: #c6b4ec;
+    }

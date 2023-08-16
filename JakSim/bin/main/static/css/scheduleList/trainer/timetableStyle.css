@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+
+#timetable {
+    width: 450px;
+    height: 287px;
+    float: right;
+    margin-top: 13px;
+
+    border-radius: 20px;
+    border: 2px solid rgba(196, 196, 196, 1);
+    background: white;
+
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: rgba(116, 116, 116, 1);
+}
+
+#timetableDetail {
+    width: 445px;
+    height: 287px;
+    padding: 20px;
+    background: #ffffff00;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+#timetableBtn {
+    margin: 10px 150px 10px;
+}
+
+#title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #A584EE;
+}
+
+#reservation_date {
+    margin: 15px 170px 0px;
+    font-size: 17px;
+    color: #A584EE;
+}
+
+#timetable_user_inlist{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 15px
+}
+
+#timetable_user_list{
+    width: 100%;
+    height: 70px;
+}
+
+#reservationDetail {
+    height: 270px;
+    border: 2px solid rgba(196, 196, 196, 1);
+    border-radius: 20px;
+    margin-top: 13px;
+    padding: 20px;
+}

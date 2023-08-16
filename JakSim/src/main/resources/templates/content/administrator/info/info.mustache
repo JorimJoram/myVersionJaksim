@@ -1,0 +1,57 @@
+{{>layout/header}}
+<script src="/javascript/administrator/info/info.js"></script>
+<link rel="stylesheet" href="/css/administrator/info/infoStyle.css">
+</head>
+
+<body>
+<div class="container">
+    {{#user}}
+        {{id}}
+        {{name}}
+        {{email}}
+        {{tel}}
+        {{birth}}
+        {{c_dt}}
+        {{#m_dt}}
+            {{m_dt}}
+        {{/m_dt}}
+        {{role}}
+    {{/user}}
+
+    {{#imageList}}
+    <table>
+        <tr>
+            <td><img src="{{path}}" alt="image" class="rounded info_profile_img"></td>
+        </tr>
+        <tr>
+            <td>{{dt}}</td>
+        </tr>
+    </table>
+    {{/imageList}}
+
+    <table>
+    {{#reviewList}}
+        <tr>
+            <td>{{reviewId}}</td>
+            <td>{{trainerId}}</td>
+            <td>{{reviewContent}}</td>
+            <td>{{star}} / 5</td>
+            <td>{{reviewCreateDate}}</td>
+        </tr>
+    {{/reviewList}}
+    </table>
+
+    <table style="width: 100%;">
+        {{#paymentList}}
+            <tr>
+                <td>{{idx}}</td>
+                <td>{{c_dt}}</td>
+                <td class="info_refund">{{refund}}</td>
+                <td>{{cnt}}</td>
+                <td>{{period}}</td>
+            </tr>
+        {{/paymentList}}
+    </table>
+
+</div>
+</body>

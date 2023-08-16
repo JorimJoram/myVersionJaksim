@@ -1,0 +1,24 @@
+{{>layout/header}}
+    <script src="/javascript/find/findPw_2.js"></script>
+    <script src="/javascript/email/certEmail.js"></script>
+    <link rel="stylesheet" href="/css/find/findStyle.css">
+</head>
+
+<body>
+{{>layout/navi}}
+
+    <div class="container">
+        <div>
+            <h1>Cert</h1>
+            <input type="text" id="find_pw_validInput">
+            <button class="jaksim_btn" id="find_pw_resend_button">재전송</button>
+            <button class="jaksim_btn" id="find_pw_validButton">인증</button>
+            <span id="find_pw_validTime">-- : --</span>
+        </div>
+        <div>
+            <span id="find_pw_validFail" style="color:red"></span>
+        </div>
+        <div id="find_pw_changePwDiv"></div>
+    </div>
+
+{{>layout/footer}}
