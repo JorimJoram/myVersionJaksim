@@ -12,18 +12,8 @@ public class AccountController {
 
     @GetMapping("/account/{num}")
     public String accountPages(@PathVariable("num") int num, Model model) {
-        String pageSeq;
-
-        if (num == 4) { //이후에 숫자는 본인 재량껏 변경바람
-            model.addAttribute("head_title", "회원가입 성공");
-            pageSeq = String.format(defaultPath + "account_fin");
-            return pageSeq;
-        }
-
-        model.addAttribute("head_title", "회원가입");
-        pageSeq = String.format(defaultPath + "account_" + num);
-
-        return pageSeq;
+        model.addAttribute("head_title", (num == 4) ? "회원가입 성공" : "회원가입");
+        return (num == 4) ? String.format(defaultPath + "account_fin") : String.format(defaultPath + "account_" + num);
     }
 
     @GetMapping("/login")
@@ -31,14 +21,10 @@ public class AccountController {
         model.addAttribute("head_title", "로그인");
 
         String url = request.getHeader("Referer");
-
-        if(request.getSession().getAttribute("prevPage") != null){
-            request.getSession().removeAttribute("prevPage");
-        }
-
-        if (url != null && !url.contains("/login") && url.contains("/find")) {
+        if (url != null && !url.contains("/login")) {
             request.getSession().setAttribute("prevPage", url);
         }
+
         return String.format(this.defaultPath + "login");
     }
 

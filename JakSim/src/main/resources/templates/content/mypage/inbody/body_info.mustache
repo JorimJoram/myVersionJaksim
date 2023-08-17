@@ -1,6 +1,7 @@
 {{>layout/header}}
     <link rel="stylesheet" href="/css/mypage/mypageStyle.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+    <script src="/javascript/chart/drawChart.js"></script>
     <script src="/javascript/inbody/body_info.js"></script>
 </head>
 
@@ -45,7 +46,7 @@
                     <td><input type="number" id="inbody_input_score" class="inbody_create_input"></td>
                     <td><input type="number" id="inbody_input_fat" class="inbody_create_input"></td>
                     <td><input type="number" id="inbody_input_muscle" class="inbody_create_input"></td>
-                    <td><button id="inbody_create_button" class="jaksim_btn">추가</button></td>
+                    <td><button id="inbody_create_button" class="jaksim_btn" onclick="createData()">추가</button></td>
                 </tr>
             </table>
             <table style="width: 100%; text-align:center; margin: 10px auto;" id="inbody_datatable">
@@ -61,9 +62,9 @@
                 <tbody id="table_tbody"></tbody>
             </table>
             <div style="text-align: center; padding-bottom: 30px;">
-                <button id="inbody_prevbutton" class="jaksim_btn jaksim_font"><-</button>
+                <button id="inbody_prevbutton" class="jaksim_btn jaksim_font" onclick="prevButtonListener()"><-</button>
                 <span id="inbody_pagenumber" class="jaksim_font">1</span>
-                <button id="inbody_nextbutton" class="jaksim_btn jaksim_font">-></button>
+                <button id="inbody_nextbutton" class="jaksim_btn jaksim_font" onclick="nextButtonListener()">-></button>
             </div>
         </div>
     </section>

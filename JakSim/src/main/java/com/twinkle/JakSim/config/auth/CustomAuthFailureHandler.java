@@ -20,7 +20,7 @@ public class CustomAuthFailureHandler implements AuthenticationFailureHandler {
 
         if(exception instanceof UsernameNotFoundException){
             redirectStrategy.sendRedirect(request, response, "/login?errorCode=not_found");
-        } else if (exception instanceof BadCredentialsException) {
+        }else if (exception instanceof BadCredentialsException) {
             redirectStrategy.sendRedirect(request, response, "/login?errorCode=bad_credentials");
         }else if (exception instanceof AccountExpiredException) {
             redirectStrategy.sendRedirect(request, response, "/login?errorCode=account_expired");

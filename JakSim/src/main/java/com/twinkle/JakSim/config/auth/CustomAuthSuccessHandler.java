@@ -23,10 +23,7 @@ public class CustomAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHand
         clearSession(request);
 
         String prevPage = (String) request.getSession().getAttribute("prevPage");
-        if(prevPage == null){
-            prevPage = "/";
-        }
-        if(prevPage.equals("") || prevPage.contains("/account")){
+        if(prevPage == null || prevPage.isEmpty() || prevPage.contains("/account") || prevPage.contains("/find")){
             prevPage = "/";
         }
 

@@ -1,21 +1,18 @@
 var data = [];
 var selectOption, chart;
-var isFirst = true;
 var totalPage;
 var page;
 var nextButton, prevButton;
+var canvas;
 
 window.onload = function(){
     totalPage = document.getElementById('inbody_totalPage').innerHTML;
     pageNumber = document.getElementById('inbody_pagenumber');
-
+    canvas = document.getElementById('inbodyChart').getContext('2d');
     page = parseInt(pageNumber.innerHTML);
 
-    if(isFirst){
-        getChart('weight');
-        getData();
-        isFirst = false;
-    }
+    getChart('weight');
+    getData();
 
     selectOption = document.getElementById('inbody_selector');
     selectOption.addEventListener('change', (event) => {
@@ -24,15 +21,8 @@ window.onload = function(){
     });
 
     nextButton = document.getElementById('inbody_nextbutton');
-    nextButton.addEventListener('click', nextButtonListener);
-
     prevButton = document.getElementById('inbody_prevbutton');
-    prevButton.addEventListener('click', prevButtonListener);
-
     checkNextPrevButton();
-
-    var createButton = document.getElementById('inbody_create_button');
-    createButton.addEventListener('click', createData);
 }
 
 function createData(){
@@ -62,18 +52,8 @@ function createData(){
 }
 
 function checkNextPrevButton(){
-    if(totalPage == 1){
-        nextButton.disabled = true;
-        prevButton.disabled = true;
-    }
-    if(page >= totalPage){
-        nextButton.disabled = true;
-    }else if(page <= 1){
-        prevButton.disabled = true;
-    }else{
-        nextButton.disabled = false;
-        prevButton.disabled = false;
-    }
+    nextButton.disabled = (totalPage <= 1) || (page >= totalPage);
+    prevButton.disabled = (totalPage <= 1) || (page <= 1);
 }
 
 function prevButtonListener(){
@@ -138,97 +118,39 @@ function deleteData(event){
         })
 }
 
-function getChart(option){
+function getChart(select){
     axios.get('/inbody/api/chart-data')
         .then(response => {
-            if(response.data.length === 0){
-                response.data = [{
-                    id: 0, height: 0, weight: 0, score: 0, fat: 0, muscle: 0, c_dt: Date.now()
-                }];
-            }
-            showChart(response.data, response.data.map(data => data['c_dt']), option);
+            if(response.data.length === 0){ response.data = [{ id: 0, height: 0, weight: 0, score: 0, fat: 0, muscle: 0, c_dt: Date.now()}]; }
+            dataProcess(response.data, response.data.map(data => data['c_dt']), select);
         })
         .catch(error => {
             console.error(error);
         });
 }
 
-function showChart(chartData, label, option){
-    if(chart){chart.destroy();}
+function dataProcess(dataList, label, select) {
+    var chartType = 'line';
+    var resultData;
+    var startData = dataList.map(data => data[select]);
+    //0인 데이터 제거
+    startData = startData.filter((value, index) => { return (value !== 0) ? true : false; });
+    label = label.filter((_, index) => dataList.map(data => data[select])[index] !== 0);
 
-    var data = chartData.map(data => data[option]);
-    for(var i=0; i<data.length; i++){
-        if(data[i] === 0){
-            data.splice(i, 1);
-            label.splice(i, 1);
-            i--;
-        }
-    }
-
-    var canvas = document.getElementById('inbodyChart').getContext('2d');
-    if(option === 'weight'){
-        var bmiData = data.map(function(weight, index){
-            var height = chartData.map(data => data['height'])[index];
-            height /= 100;
-            var bmi = weight / (height*height);
-            return bmi.toFixed(2);
+    if(select === 'weight'){
+        var bmiData = startData.map(function(weight, index){
+            var height = (dataList.map(data => data['height'])[index]) / 100;
+            return parseFloat((weight / (height * height)).toFixed(2));
         });
-        chart = new Chart(canvas, {
-                type: 'line',
-                data: {
-                    labels: label,
-                    datasets: [
-                        {
-                            label: option,
-                            yAxisID: 'weight-y-axis',
-                            data: data,
-                            borderWidth: 2,
-                            tension: 0.4
-                        },
-                        {
-                            label: 'BMI',
-                            yAxisID: 'bmi-y-axis',
-                            data: bmiData,
-                            borderWidth: 2,
-                            tension: 0.4,
-                            fill: false
-                        },
-                    ]
-                },
-                options: {
-                    scales: {
-                        'weight-y-axis':{
-                            type: 'linear',
-                            position: 'left',
-                            beginAtZero: false
-                        },
-                        'bmi-y-axis':{
-                            type: 'linear',
-                            position: 'right',
-                            beginAtZero: false
-                        }
-                    }
-                }
-            });
-    }else{
-        chart = new Chart(canvas, {
-        type: 'line',
-        data: {
-            labels: label,
-            datasets: [{
-                label: option,
-                data: data,
-                borderWidth: 2,
-                tension: 0.4
-            }]
-        },
-        options: {
-            scales: {
-                y:{
-                    beginAtZero: false
-                }
-            }
-        }
-    });
+        bmiData = {label: 'bmi', yAxisID: 'bmi', data: bmiData, borderWidth: 2, tension: 0.4};
+        bmiScale = {type: 'linear', position: 'right', beginAtZero: false};
     }
+
+    startData = {label: select, yAxisID: select, data: startData, borderWidth: 2, tension:0.4};
+    startScale = {type: 'linear', position: 'left', beginAtZero: false};
+
+    (bmiData === undefined) ?
+            showChart([startData], label, {select: startScale}, chartType)
+            :
+            showChart([startData, bmiData], label, {select: startScale, 'bmi': bmiScale}, chartType);
 }

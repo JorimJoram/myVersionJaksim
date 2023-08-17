@@ -21,14 +21,10 @@ public class CustomUserDetailService implements UserDetailsService {
     private final UserDao userDao;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        final Optional<UserDto> siteUser = userDao.findByUserId(username);
-
-        if(siteUser.isEmpty()){
-            throw new UsernameNotFoundException("user not found");
-        }
+        final UserDto siteUser = userDao.findByUserId(username).orElseThrow(() -> new UsernameNotFoundException("user not found"));
 
         List<GrantedAuthority> authorities = new ArrayList<>();
-        switch (siteUser.get().getRole()){
+        switch (siteUser.getRole()){
             case 0:
                 authorities.add(new SimpleGrantedAuthority("ADMIN"));
                 break;
@@ -40,7 +36,7 @@ public class CustomUserDetailService implements UserDetailsService {
                 break;
         }
 
-        return new User(siteUser.get().getId(), siteUser.get().getPw(), authorities);
+        return new User(siteUser.getId(), siteUser.getPw(), authorities);
     }
 
 }

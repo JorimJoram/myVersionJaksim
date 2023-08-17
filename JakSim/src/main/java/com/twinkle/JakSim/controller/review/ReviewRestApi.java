@@ -42,7 +42,7 @@ public class ReviewRestApi {
                                          @RequestParam(defaultValue = "0") int star){
         List<ReviewDto> reviewList = new ArrayList<>();
         if(((tp_idx == 0) ^ (ut_idx == 0))){
-            reviewList = tp_idx == 0 ? reviewService.getReviewListByUtIdx(ut_idx, sort, star) : reviewService.getReviewListByTpIdx(tp_idx, sort, star);
+            reviewList = (tp_idx == 0) ? reviewService.getReviewListByUtIdx(ut_idx, sort, star) : reviewService.getReviewListByTpIdx(tp_idx, sort, star);
         }
         return reviewList;
     }
@@ -66,6 +66,4 @@ public class ReviewRestApi {
                              @RequestParam(defaultValue = "0") int tp_idx, @AuthenticationPrincipal User user){
         return 0;
     }
-
-    //test
 }
