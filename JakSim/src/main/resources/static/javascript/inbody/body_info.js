@@ -131,9 +131,10 @@ function getChart(select){
 
 function dataProcess(dataList, label, select) {
     var chartType = 'line';
-    var resultData;
     var startData = dataList.map(data => data[select]);
-    //0인 데이터 제거
+    var resultScale = {};
+
+    //0인 데이터 및 레이블 제거
     startData = startData.filter((value, index) => { return (value !== 0) ? true : false; });
     label = label.filter((_, index) => dataList.map(data => data[select])[index] !== 0);
 
@@ -143,14 +144,31 @@ function dataProcess(dataList, label, select) {
             return parseFloat((weight / (height * height)).toFixed(2));
         });
         bmiData = {label: 'bmi', yAxisID: 'bmi', data: bmiData, borderWidth: 2, tension: 0.4};
-        bmiScale = {type: 'linear', position: 'right', beginAtZero: false};
+        resultScale['bmi'] = {type: 'linear', position: 'right', beginAtZero: false};
     }
 
     startData = {label: select, yAxisID: select, data: startData, borderWidth: 2, tension:0.4};
-    startScale = {type: 'linear', position: 'left', beginAtZero: false};
+    resultScale[select] = {type: 'linear', position: 'left', beginAtZero: false};
 
     (bmiData === undefined) ?
-            showChart([startData], label, {select: startScale}, chartType)
+            showChart([startData], label, resultScale, chartType)
             :
-            showChart([startData, bmiData], label, {select: startScale, 'bmi': bmiScale}, chartType);
+            showChart([startData, bmiData], label, resultScale, chartType);
+}
+
+function showChart(chartDataset, chartLabel, optionScale, chartType){
+    if(chart){chart.destroy();}
+
+    console.log(optionScale);
+
+    chart = new Chart(canvas, {
+            type: chartType,
+            data: {
+                labels: chartLabel,
+                datasets: chartDataset
+            },
+            options: {
+                scales: optionScale
+            }
+        });
 }
