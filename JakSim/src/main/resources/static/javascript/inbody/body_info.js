@@ -151,8 +151,5 @@ function dataProcess(dataList, label, select) {
 
     startData = {label: select, yAxisID: select, data: startData, borderWidth: 2, tension:0.4};
 
-    inBodyChart = (bmiData === undefined) ?
-            showChart([startData], label, option, chartType, canvas)
-            :
-            showChart([startData, bmiData], label, option, chartType, canvas);
+    inBodyChart = (bmiData === undefined) ? showChart([startData], label, option, chartType, canvas) : showChart([startData, bmiData], label, option, chartType, canvas);
 }
