@@ -55,7 +55,7 @@ function getAccessDataForLinear(start, end){
 
     axios.get(`/man/api/visit/date?start=${startDate}&end=${endDate}`)
         .then(response => {
-            makeLinearChart(response.data);
+            linearDataProcess(response.data);
         }).catch(error => {
             console.error(error);
         });
@@ -65,11 +65,8 @@ function avgData(list){
     return ((list.reduce((acc, cur) => acc + cur, 0))/list.length).toFixed(2);
 }
 
-function makeLinearChart(chartData){
-    if(newLinearChart){
-        newLinearChart.destroy();
-    }
-
+function linearDataProcess(chartData){
+    if(newLinearChart){newLinearChart.destroy();}
     linearChart = document.getElementById('man_main_linearChart');
 
     var labelList = chartData.map(data => data['date']);
@@ -79,31 +76,8 @@ function makeLinearChart(chartData){
 
     document.getElementById('man_section_linearHead').innerHTML = `${labelList[0]} ~ ${labelList[labelList.length-1]} 일평균 로그인: ${avg}`;
 
-    newLinearChart = new Chart(linearChart, {
-        type: 'line',
-        data: {
-          labels: labelList,
-          datasets: [
-              {
-                label: '로그인 수',
-                data: dataList,
-                borderWidth: 1,
-                tension: 0.4
-              },
-             {
-               label: '일평균',
-               data: avgList,
-               borderWidth: 3,
-               pointRadius:0
-             }
-          ]
-        },
-        options: {
-          maintainAspectRatio:false,
-          aspectRatio: 3,
-          y:{
-            beginAtZero:false
-          }
-        }
-    });
+    newLinearChart = showChart([{label:'접속자 수', data:dataList, borderWidth: 1, tension:0.4}, {label:'일평균', data:avgList, borderWidth: 3, pointRadius:0}],
+            labelList,
+            { responsive: true, maintainAspectRatio: false, aspectRatio: 3, y: { beginAtZero:false } },
+            'line', linearChart);
 }

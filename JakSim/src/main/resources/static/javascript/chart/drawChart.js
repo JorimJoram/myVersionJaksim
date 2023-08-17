@@ -4,19 +4,18 @@
 @optionScale 차트 options의 scales에 해당되는 설정값 { } 형태로 전송
 @chartType 차트 형태
 */
-var chart
 
-function showChart(chartDataset, chartLabel, optionScale, chartType){
-    if(chart){chart.destroy();}
 
-    chart = new Chart(canvas, {
+function showChart(chartDataset, chartLabel, option, chartType, canvas){
+    //if(chart){chart.destroy();}
+    console.log(canvas);
+
+    return new Chart(canvas, {
             type: chartType,
             data: {
                 labels: chartLabel,
                 datasets: chartDataset
             },
-            options: {
-                scales: optionScale
-            }
+            options: option
         });
 }

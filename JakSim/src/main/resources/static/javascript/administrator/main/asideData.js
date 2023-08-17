@@ -26,13 +26,17 @@ function getVisitCntDay(){
     var cnt = document.getElementById('man_main_aside_visitCntYesterday');
     var startDate = yesterday;
     var endDate = yesterday;
+    console.log(`/man/api/visit/date?start=${startDate}&end=${endDate}`);
 
     axios.get(`/man/api/visit/date?start=${startDate}&end=${endDate}`)
         .then(response => {
-            var result = response.data[0]['amount'];
-            if(result === 'undefined' || response.data[0])
+            var result;
+            try{
+                result = response.data[0]['amount'];
+            }catch(err){
                 result = 0;
-            cnt.innerHTML = numFormat(response.data[0]['amount']);
+            }
+            cnt.innerHTML = numFormat(result);
         }).catch(error => {
             console.error(error);
     });

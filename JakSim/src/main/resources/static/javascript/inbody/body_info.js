@@ -1,5 +1,5 @@
 var data = [];
-var selectOption, chart;
+var selectOption, inBodyChart;
 var totalPage;
 var page;
 var nextButton, prevButton;
@@ -130,13 +130,15 @@ function getChart(select){
 }
 
 function dataProcess(dataList, label, select) {
+    if(inBodyChart){inBodyChart.destroy();}
     var chartType = 'line';
     var startData = dataList.map(data => data[select]);
-    var resultScale = {};
+    var option = {scales: { }};
 
     //0인 데이터 및 레이블 제거
     startData = startData.filter((value, index) => { return (value !== 0) ? true : false; });
     label = label.filter((_, index) => dataList.map(data => data[select])[index] !== 0);
+    option.scales[select] = {type: 'linear', position: 'left', beginAtZero: false};
 
     if(select === 'weight'){
         var bmiData = startData.map(function(weight, index){
@@ -144,31 +146,13 @@ function dataProcess(dataList, label, select) {
             return parseFloat((weight / (height * height)).toFixed(2));
         });
         bmiData = {label: 'bmi', yAxisID: 'bmi', data: bmiData, borderWidth: 2, tension: 0.4};
-        resultScale['bmi'] = {type: 'linear', position: 'right', beginAtZero: false};
+        option.scales['bmi'] = {type: 'linear', position: 'right', beginAtZero: false};
     }
 
     startData = {label: select, yAxisID: select, data: startData, borderWidth: 2, tension:0.4};
-    resultScale[select] = {type: 'linear', position: 'left', beginAtZero: false};
 
-    (bmiData === undefined) ?
-            showChart([startData], label, resultScale, chartType)
+    inBodyChart = (bmiData === undefined) ?
+            showChart([startData], label, option, chartType, canvas)
             :
-            showChart([startData, bmiData], label, resultScale, chartType);
-}
-
-function showChart(chartDataset, chartLabel, optionScale, chartType){
-    if(chart){chart.destroy();}
-
-    console.log(optionScale);
-
-    chart = new Chart(canvas, {
-            type: chartType,
-            data: {
-                labels: chartLabel,
-                datasets: chartDataset
-            },
-            options: {
-                scales: optionScale
-            }
-        });
+            showChart([startData, bmiData], label, option, chartType, canvas);
 }
