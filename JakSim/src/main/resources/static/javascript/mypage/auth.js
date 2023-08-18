@@ -16,7 +16,7 @@ window.onload = function(){
             var data = {pw: pwValue};
             sendPw(data);
         }
-    })
+    });
 }
 
 var checkPassword = function(){
