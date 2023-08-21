@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,14 +22,15 @@ public class UserDao {
     private JdbcTemplate jdbcTemplate;
 
     public int insertMember(UserDto user){
+        //userDto 객체의 요소 중 null 일 시, -2로 반환하도록 할 것
         String sql = "INSERT INTO USER_INFO(user_id, user_pw, user_name, user_gender, user_tel, user_email, user_birth, user_c_dt, user_role) " +
                 "VALUES(?, ?, ?, ?, ?, ?, ?, current_timestamp, ?)";
-        int result = -1;
+        int result;
         try{
             result = jdbcTemplate.update(sql,
                     user.getId(), user.getPw(), user.getName(), user.getGender(), user.getTel(), user.getEmail(), user.getBirth(), user.getRole());
-        }catch(Exception e){
-            System.out.println(e.getMessage());
+        } catch(Exception e){
+            result = -1;
         }
 
         return result;
@@ -36,11 +38,11 @@ public class UserDao {
 
     public Optional<UserDto> findByUserId(String userId){
         String sql = "SELECT * FROM USER_INFO WHERE USER_ID = ?";
-        UserDto userDto = null;
+        UserDto userDto;
         try{
             userDto = jdbcTemplate.queryForObject(sql, new UserRowMapper(), userId);
         } catch(EmptyResultDataAccessException e){
-            System.out.println("데이터가 없다는디?");
+            userDto = null;
         }
 
         return Optional.ofNullable(userDto);
@@ -48,12 +50,12 @@ public class UserDao {
 
     public UserDto findByTel(String userTel){
         String sql = "SELECT * FROM USER_INFO WHERE USER_TEL = ?";
-        UserDto userDto = null;
+        UserDto userDto;
 
         try{
             userDto = jdbcTemplate.queryForObject(sql, new UserRowMapper(), userTel);
         }catch (EmptyResultDataAccessException e){
-            System.out.println("데이터 없음");
+            userDto = null;
         }
 
         return userDto;
@@ -63,12 +65,12 @@ public class UserDao {
         String sql = "update user_info " +
                 "set user_pw = ? " +
                 "where user_id = ?";
-        int result = -1;
+        int result;
 
         try{
             result = jdbcTemplate.update(sql, pw, user_id);
         }catch (Exception e){
-            System.out.println("패스워드 수정 에러");
+            result = -1;
         }
 
         return result;
@@ -76,23 +78,23 @@ public class UserDao {
 
     public int deleteUser(String id) {
         String sql = "DELETE FROM USER_INFO WHERE USER_ID = ?";
-        int result = -1;
+        int result;
 
         try{
             result = jdbcTemplate.update(sql, id);
         }catch (Exception e){
-            System.out.println("회원삭제 실패");
+            result = -1;
         }
         return result;
     }
 
     public Optional<UserDto> findByEmail(String email) {
         String sql = "SELECT * FROM USER_INFO WHERE USER_EMAIL = ?";
-        UserDto user = null;
+        UserDto user;
         try{
             user = jdbcTemplate.queryForObject(sql, new UserRowMapper() ,email);
         }catch (EmptyResultDataAccessException e){
-            System.out.println("데이터가 존재하지 않습니다.");
+            user = null;
         }
         return Optional.ofNullable(user);
     }
@@ -102,11 +104,11 @@ public class UserDao {
                 "SET USER_EMAIL = ? ," +
                 "USER_M_DT = CURRENT_TIMESTAMP " +
                 "WHERE USER_ID = ?";
-        int result = -1;
+        int result;
         try{
             result = jdbcTemplate.update(sql, email, username);
         }catch (Exception e){
-            System.out.println("이메일 수정 에러");
+            result = -1;
         }
 
         return result;
@@ -117,11 +119,11 @@ public class UserDao {
                 "SET USER_NAME = ? ," +
                 "USER_M_DT = CURRENT_TIMESTAMP " +
                 "WHERE USER_ID = ?";
-        int result = -1;
+        int result;
         try{
             result = jdbcTemplate.update(sql, name, username);
         }catch(Exception e){
-            System.out.println(e.getMessage());
+            result = -1;
         }
         return result;
     }
@@ -131,11 +133,11 @@ public class UserDao {
                 "SET USER_TEL = ? ," +
                 "USER_M_DT = CURRENT_TIMESTAMP " +
                 "WHERE USER_ID = ?";
-        int result = -1;
+        int result;
         try{
             result = jdbcTemplate.update(sql, tel, username);
         }catch(Exception e){
-            System.out.println(e.getMessage());
+            result = -1;
         }
         return result;
     }
@@ -145,7 +147,7 @@ public class UserDao {
                 "WHERE DATE(USER_C_DT) BETWEEN ? AND ? " +
                 "GROUP BY DATE(USER_C_DT) " +
                 "ORDER BY DATE(USER_C_DT)";
-        List<UserStat> logList = new ArrayList<>();
+        List<UserStat> logList;
         try{
             logList = jdbcTemplate.query(sql, new RowMapper<UserStat>() {
                 @Override
@@ -157,7 +159,7 @@ public class UserDao {
                 }
             }, start, end);
         }catch (EmptyResultDataAccessException e){
-            System.out.println(e.getMessage());
+            logList = new ArrayList<>();
         }
 
         return logList;
@@ -167,7 +169,7 @@ public class UserDao {
         String sql = "SELECT COUNT(*) AS AMOUNT, USER_ROLE FROM USER_INFO " +
                 "GROUP BY USER_ROLE " +
                 "ORDER BY DATE(USER_C_DT)";
-        List<UserStat> logList = new ArrayList<>();
+        List<UserStat> logList;
         try{
             logList = jdbcTemplate.query(sql, new RowMapper<UserStat>() {
                 @Override
@@ -179,7 +181,7 @@ public class UserDao {
                 }
             });
         }catch (EmptyResultDataAccessException e){
-            System.out.println(e.getMessage());
+            logList = new ArrayList<>();
         }
         return logList;
     }

@@ -36,17 +36,11 @@ public class LoginLogService {
     }
 
     private String getDefaultStart(String start){
-        if(start == null || start.isEmpty()){
-            start = LocalDate.now().plusDays(-6).toString();
-        }
-        return start;
+        return (start.isEmpty()) ? LocalDate.now().plusDays(-6).toString() : start;
     }
 
     private String getDefaultEnd(String end){
-        if(end == null || end.isEmpty()){
-            end = LocalDate.now().plusDays(1).toString();
-        }
-        return end;
+        return (end.isEmpty()) ? LocalDate.now().plusDays(1).toString() : end;
     }
 
     public List<LoginLogStat> getAmountDate(String start, String end) {
