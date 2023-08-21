@@ -31,12 +31,14 @@ public class AdminRestApi {
     }
 
     @GetMapping("/visit/group-user")
-    public List<LoginLogStat> getAmountDateGroupUsers(@RequestParam(required = false) String start, @RequestParam(required = false) String end, @RequestParam(required = false) boolean order){
+    public List<LoginLogStat> getAmountDateGroupUsers(@RequestParam(defaultValue = "", required = false) String start,
+                                                      @RequestParam(defaultValue = "", required = false) String end, @RequestParam(required = false) boolean order){
         return loginLogService.getAmountGroupUser(start, end, order);
     }
 
     @GetMapping("/account/amount")
-    public List<UserStat> getAmountAccounts(@RequestParam(required = false) String start, @RequestParam(required = false) String end){
+    public List<UserStat> getAmountAccounts(@RequestParam(defaultValue = "", required = false) String start,
+                                            @RequestParam(defaultValue = "", required = false) String end){
         return accountService.getAmountAccounts(start, end);
     }
 

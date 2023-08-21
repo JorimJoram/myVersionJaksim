@@ -5,6 +5,7 @@ import com.twinkle.JakSim.model.dto.account.UserDto;
 import com.twinkle.JakSim.model.dto.account.UserStat;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,11 +54,9 @@ public class AccountService {
 
     public AtomicBoolean checkPassword(String username, String pw) {
         AtomicBoolean result = new AtomicBoolean(false);
-        userDao.findByUserId(username).ifPresent(
-                item -> {
+        userDao.findByUserId(username).ifPresent(item -> {
                     result.set(passwordEncoder.matches(pw, item.getPw()));
-                }
-        );
+        });
         return result;
     }
 
@@ -129,17 +128,11 @@ public class AccountService {
     }
 
     private String getDefaultStart(String start){
-        if(start == null || start.isEmpty()){
-            start = LocalDate.now().plusDays(-6).toString();
-        }
-        return start;
+        return (start.isEmpty()) ? LocalDate.now().plusDays(-6).toString() : start;
     }
 
     private String getDefaultEnd(String end){
-        if(end == null || end.isEmpty()){
-            end = LocalDate.now().plusDays(1).toString();
-        }
-        return end;
+        return (end.isEmpty()) ? LocalDate.now().plusDays(1).toString() : end;
     }
 
     public List<UserStat> getAmountByRole() {
