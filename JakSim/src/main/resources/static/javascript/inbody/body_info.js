@@ -87,6 +87,7 @@ function getData(){
                 html += '<td>' + '<button class="delete_button" style="border: none; border-radius:50%; color:white; background-color:red;"> - </button>' + '</td>';
                 html += '</tr>';
             });
+            getBMIWeight(response.data[0].height);
             tbody.innerHTML = html;
 
             var delButtons = document.getElementsByClassName('delete_button');
@@ -97,6 +98,17 @@ function getData(){
         .catch(error => {
             console.error(error);
         })
+}
+
+function getBMIWeight(height){
+    //18.5 ~ 23 -> 정상 23.1 ~ 25 과체중 25 ~ 비만
+    height /= 100;
+    BMIArr = new Array((height*height) * 18, (height*height) * 23, (height*height) * 25).map(item => (item.toFixed(2)));
+    console.log(BMIArr);
+    document.getElementById('inbody_bmi_1').innerHTML = BMIArr[0];
+    document.getElementById('inbody_bmi_2').innerHTML = BMIArr[1];
+    document.getElementById('inbody_bmi_3').innerHTML = BMIArr[2];
+
 }
 
 function deleteData(event){

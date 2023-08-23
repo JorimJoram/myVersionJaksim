@@ -53,7 +53,7 @@ public class MypageController {
         model.addAttribute("head_title", user.getUsername() + "님 이력확인");
         model.addAttribute("user_info", accountService.findByUsername(user.getUsername()));
 
-        model.addAttribute("access_log", loginLogService.findByUsername(user.getUsername(), 2));
+        model.addAttribute("access_log", loginLogService.findByUsername(user.getUsername(), 1));
         return String.format(defaultPath + "log");
     }
 
