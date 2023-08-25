@@ -110,4 +110,6 @@ fabric.properties
 !.idea/codeStyles
 !.idea/runConfigurations
 src/main/resources/application.properties
+src/main/resources/application-oauth.properties
+
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all

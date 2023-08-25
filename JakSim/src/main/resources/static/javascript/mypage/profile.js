@@ -146,10 +146,24 @@ function changeProfileImage(){
     var formData = new FormData();
     formData.append('file', file);
 
+    if(fileInput.files.length === 0){
+        alert('이미지를 다시 선택해주세요');
+        return ;
+    }
+
+    var ImageType = ['.jpg', '.jpeg', '.png', '.gif', '.bmp'];
+    var fileExtension = fileInput.files[0].name.substring(fileInput.files[0].name.lastIndexOf('.')).toLowerCase();
+
+    if(!ImageType.includes(fileExtension)){
+        alert('지원하지 않는 형식입니다\n.jpg .jpeg .png .gif .bmp 파일만 업로드 가능합니다.');
+        return ;
+    }ㄴㄴ
+
     axios.put('/account/api/change-image', formData, {headers: {'Content-Type' : 'multipart/form-data'}})
         .then(response => {
             if(response.data){
-                window.location.href='/';
+                alert('프로필 이미지가 변경되었습니다.');
+                window.location.href='/mypage/main';
             }
         })
         .catch(error => {
